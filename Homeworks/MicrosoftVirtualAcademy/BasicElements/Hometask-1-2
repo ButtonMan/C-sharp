@@ -1,0 +1,92 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕЕ ЗАДАЧИ:
+ *  Написать программу, которая, реализует диалог с пользователем, запрашивает 
+ *  с клавиатуры два целых числа, и выводит на экран сумму данных чисел в
+ *  прямом и обратном порядке.
+ */
+//+---------------------------------------------------------------------------+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__1._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЬЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int A = 0;
+            int B = 0;
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //инициализация пользователем переменной А
+            Console.Write("Input value of the \"A\" variable:" +
+                Environment.NewLine + "--> ");
+            A = int.Parse(Console.ReadLine());
+
+            //инициализация пользователем переменной B
+            Console.Write("Input value of the \"B\" variable:" +
+                Environment.NewLine + "--> ");
+            B = int.Parse(Console.ReadLine());
+
+            //вывод на экран суммы A + B в прямом порядке
+            Console.WriteLine(Environment.NewLine + "RESULT #1:" +
+                Environment.NewLine + "sum = {0,0:N0}", A + B);
+
+
+            //вывод на экран суммы A + B в обратном порядке
+            Console.WriteLine(Environment.NewLine + "RESULT #2:" +
+                Environment.NewLine + "revers of sum digit value = {0,0:N0}",
+                ReversNumber(A + B));         
+        }
+
+        //МЕТОДЫ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// Расчет количества цифр в числе
+        /// </summary>
+        /// <param name="number">произвольное целочиселнное значение </param>
+        /// <returns></returns>
+        private static int NumberOfDigits(int number)
+        {
+            int counter = 0;
+            do{
+                number /= 10;
+                ++counter;
+            } while (number > 0);
+            return counter;
+        }
+       
+        /// <summary>
+        /// реверс цифр числа целого типа
+        /// </summary>
+        /// <param name="number"> произвольное целочиселнное значение </param>
+        /// <returns>число с выполненным реверсом цифр</returns>
+        static int ReversNumber(int number)
+        {
+            int tmpResultNumber = 0;                //результат вычислений
+            int residue = 0;                        //остаток от деления
+            int tmpCounter = NumberOfDigits(number);//количество цифр в числе
+
+            //реверс расположения цифр в числе number
+            for( int i = tmpCounter; i > 0; --i )
+            {
+                residue = number % 10;
+                tmpResultNumber += (residue * (int)Math.Pow(10, i-1));
+                number /= 10;
+            }
+
+            return tmpResultNumber;
+        }
+    }
+}
