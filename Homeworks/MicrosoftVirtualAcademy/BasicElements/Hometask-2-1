@@ -1,0 +1,39 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая подсчитывает площадь равностороннего 
+ *  треугольника, периметр которого равен p;
+ */
+//+---------------------------------------------------------------------------+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__2._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ И ИНИЦИАЛИЗАЦИЯ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double perimeter = 0;
+            double square = 0;
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.Write("Input perimeter value" + Environment.NewLine + 
+                "--> ");
+            perimeter = double.Parse(Console.ReadLine());
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            Console.WriteLine(Environment.NewLine + "RESULT:" +
+                Environment.NewLine + "square  = {0:F2}", Math.Sqrt(3) / 4 *
+                Math.Pow(perimeter / 3, 2));
+        }
+    }
+}
