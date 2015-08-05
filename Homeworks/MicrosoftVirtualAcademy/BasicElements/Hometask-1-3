@@ -1,0 +1,53 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕЕ ЗАДАЧИ:
+ *  Написать программу, которая, реализует диалог с пользователем, запрашивает 
+ *  с клавиатуры три целых числа, и выводит на экран сумму данных чисел.
+ */
+//+---------------------------------------------------------------------------+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__1._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЬЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int A = 0;
+            int B = 0;
+            int C = 0;
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //инициализация пользователем переменной А
+            Console.Write("Input value of the \"A\" variable:" +
+                Environment.NewLine + "--> ");
+            A = int.Parse(Console.ReadLine());
+
+            //инициализация пользователем переменной B
+            Console.Write("Input value of the \"B\" variable:" +
+                Environment.NewLine + "--> ");
+            B = int.Parse(Console.ReadLine());
+
+
+            //инициализация пользователем переменной C
+            Console.Write("Input value of the \"C\" variable:" +
+                Environment.NewLine + "--> ");
+            C = int.Parse(Console.ReadLine());
+
+            //вывод на экран суммы A + B + С
+            Console.WriteLine(Environment.NewLine + "RESULT:" +
+                Environment.NewLine + "{0,0:N0} + {1,0:N0} + {2,0:N0}" +
+                " = {3,0:N0}", A, B, C, A + B + C);
+        }
+    }
+}
