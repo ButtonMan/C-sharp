@@ -1,0 +1,82 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана точка на плоскости с координатами (х, у). Составить программу, которая
+ *  выдает одно из сообщений «Да», «Нет», «На границе» в зависимости от того, 
+ *  лежит ли точка внутри заштрихованной области, вне заштрихованной области 
+ *  или на ее границе. Координаты расположения центра круга на графике (0, 0).
+ *  Радиус равен отрезку длинной 9 ед.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::данные вводимы пользователем
+            double x;                           //по оси Х
+            double y;                           //по оси Y
+
+            //::координаты центра окружности на графике
+            const double circleCenterX = 0;     //по оси Х
+            const double circleCenterY = 0;     //по оси Y
+            
+            //::координаты границы окружности
+            const double circleBorderX1 = 0;    //по оси Х
+            const double circleBorderY1 = -9;   //по оси Y
+            const double circleBorderX2 = 9;    //по оси Х
+            const double circleBorderY2 = 0;    //по оси Y
+            const double circleBorderX3 = 0;    //по оси Х
+            const double circleBorderY3 = 9;    //по оси Y          
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+           
+            Console.Write("Input X value " + Environment.NewLine + "--> ");
+            x = double.Parse(Console.ReadLine());
+            Console.Write("Input Y value " + Environment.NewLine + "--> ");
+            y = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::определение местоположения точки относительно круга
+            if(Math.Pow(x, 2) + Math.Pow(y, 2)  <  Math.Pow(9, 2) && x > 0)
+            {
+                Console.WriteLine(Environment.NewLine + "RESULT:" + 
+                    Environment.NewLine + "point lies within circle area");
+            }
+            else
+            {
+                if(Math.Pow(x, 2) + Math.Pow(y, 2)  ==  Math.Pow(9, 2) || 
+                    (x == 0 && (y <= 9 && y >= -9)))
+                {
+                    Console.WriteLine(Environment.NewLine + "RESULT:" +
+                    Environment.NewLine + "point lies on the boundary of the " + 
+                        "circle");
+                }
+                else
+                {
+                    Console.WriteLine(Environment.NewLine + "RESULT:" +
+                    Environment.NewLine + "point lies out of circle area ");
+                }
+            }
+        }
+    }
+}
