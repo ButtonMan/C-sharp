@@ -1,0 +1,70 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана точка на плоскости с координатами (х, у). Составить программу, которая
+ *  выдает одно из сообщений «Да», «Нет», «На границе» в зависимости от того, 
+ *  лежит ли точка внутри заштрихованной области, вне заштрихованной области 
+ *  или на ее границе. Области задаются графически следующим образом (ссылка
+ *  на изображение): https://vk.com/photo8599796_376582519?rev=1
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::данные вводимы пользователем
+            double x;                           //по оси Х
+            double y;                           //по оси Y
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+           
+            Console.Write("Input X value " + Environment.NewLine + "--> ");
+            x = double.Parse(Console.ReadLine());
+            Console.Write("Input Y value " + Environment.NewLine + "--> ");
+            y = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::определение местоположения точки относительно треугольника
+            if (x > 0 && y > 0 && x < 70 && y < 70 && y < x)
+            {
+                Console.WriteLine(Environment.NewLine + "RESULT:" +
+                    Environment.NewLine + "point lies within figure area");
+            }
+            else
+            {
+                if ((y == 0 && x >= 0 && x <= 70) || (x == y) || 
+                    (x == 70 && y <= 70))
+                {
+                    Console.WriteLine(Environment.NewLine + "RESULT:" +
+                        Environment.NewLine + "point lies on the boundary " + 
+                        "of the figure");
+                }
+                else
+                {
+                    Console.WriteLine(Environment.NewLine + "RESULT:" +
+                        Environment.NewLine + "point lies out of figure area ");
+                }
+            }
+        }
+    }
+}
