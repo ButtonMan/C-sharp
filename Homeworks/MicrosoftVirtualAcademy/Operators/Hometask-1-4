@@ -1,0 +1,55 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Для произвольных значений аргументов вычислить значение функции, заданной
+ *  следующим образом:
+ *  y = SQRT(5 - X^3)
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double num;                                    //произвольное число
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.WriteLine("Input any number:");
+            num = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            if (5 - Math.Pow(num, 3) != 0 && 5 - Math.Pow(num, 3) > 0)
+            {
+                //вычисление значения функции  SQRT(5 - X^3)
+                Console.WriteLine(Environment.NewLine + "RESULT: " +
+                    Environment.NewLine +
+                    "y = SQRT(5 - X^3) = y = SQRT(5 - {0:F}^3) = {1:F}",
+                    num, Math.Sqrt(5 - Math.Pow(num, 3)));
+            }
+            else
+            {
+                //уравнение не имеет решений
+                Console.WriteLine(Environment.NewLine + "RESULT:" +
+                    Environment.NewLine + "y = SQRT(5 - X^3) => " +
+                    "the equation has no solution");
+            }
+        }
+    }
+}
