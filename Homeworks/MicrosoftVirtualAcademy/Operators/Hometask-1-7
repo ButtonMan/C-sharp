@@ -1,0 +1,55 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Для произвольных значений аргументов вычислить значение функции, заданной
+ *  следующим образом:
+ *  y = X / SQRT(2*X - 1)
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double num;                                    //произвольное число
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.WriteLine("Input any number:");
+            num = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            if (2 * num - 1 > 0)
+            {
+                //вычисление значения функции  X / SQRT(2*X - 1)
+                Console.WriteLine(Environment.NewLine + "RESULT: " +
+                    Environment.NewLine +
+                    "y = X / SQRT(2*X - 1) = X / SQRT(2*{0:F} - 1) = {1:F}",
+                    num, num / Math.Sqrt(2 * num - 1));
+            }
+            else
+            {
+                //уравнение не имеет решений
+                Console.WriteLine(Environment.NewLine + "RESULT:" +
+                    Environment.NewLine + "y = X / SQRT(2*X - 1) => " +
+                    "the equation has no solution");
+            }
+        }
+    }
+}
