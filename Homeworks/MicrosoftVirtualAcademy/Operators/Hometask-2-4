@@ -1,0 +1,71 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана точка на плоскости с координатами (х, у). Составить программу, которая
+ *  выдает одно из сообщений «Да», «Нет», «На границе» в зависимости от того, 
+ *  лежит ли точка внутри заштрихованной области, вне заштрихованной области 
+ *  или на ее границе. Области задаются графически следующим образом (ссылка
+ *  на изображение): https://vk.com/photo8599796_376547824?rev=1
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::данные вводимы пользователем
+            double x;                           //по оси Х
+            double y;                           //по оси Y
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+           
+            Console.Write("Input X value " + Environment.NewLine + "--> ");
+            x = double.Parse(Console.ReadLine());
+            Console.Write("Input Y value " + Environment.NewLine + "--> ");
+            y = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::определение местоположения точки относительно круга
+            if (Math.Pow(x, 2) + Math.Pow(y, 2)  <  Math.Pow(15, 2) ||
+                Math.Pow(x, 2) + Math.Pow(y, 2) > Math.Pow(25, 2))
+            {
+                Console.WriteLine(Environment.NewLine + "RESULT:" +
+                    Environment.NewLine + "point lies within figure area");
+            }
+            else
+            {
+                if (Math.Pow(x, 2) + Math.Pow(y, 2) ==  Math.Pow(15, 2) ||
+                    Math.Pow(x, 2) + Math.Pow(y, 2) == Math.Pow(25, 2))
+                {
+                    Console.WriteLine(Environment.NewLine + "RESULT:" +
+                        Environment.NewLine + "point lies on the boundary " + 
+                        "of the figure");
+                }
+                else
+                {
+                    Console.WriteLine(Environment.NewLine + "RESULT:" +
+                        Environment.NewLine + "point lies out of figure area ");
+                }
+            }
+        }
+    }
+}
