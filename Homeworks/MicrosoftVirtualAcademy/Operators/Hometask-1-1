@@ -1,0 +1,54 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Для произвольных значений аргументов вычислить значение функции, заданной
+ *  следующим образом:
+ *  y = 1 / (1+x)^2
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double num;                                    //произвольное число
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.WriteLine("Input any number:");
+            num = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            if(num != 0)
+            {
+                //вычисление значения функции  1 / (1 + x)^2
+                Console.WriteLine(Environment.NewLine + "RESULT: " + 
+                    Environment.NewLine + 
+                    "y = 1 / (1 + x)^2 = 1 / ( 1 + {0:F} = {1:F}", num, 
+                    1 / Math.Pow((1 + num), 2));
+            }
+            else
+            {
+                //уравнение не имеет решений
+                Console.WriteLine(Environment.NewLine + "RERESULT:" +
+                    Environment.NewLine + "the equation has no solution");
+            }
+        }
+    }
+}
