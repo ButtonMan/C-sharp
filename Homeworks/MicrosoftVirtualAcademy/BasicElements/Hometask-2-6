@@ -1,0 +1,42 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая подсчитывает ребро куба, площадь полной 
+ *  поверхности которого равна s;
+ */
+//+---------------------------------------------------------------------------+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__2._6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+
+            double cubeSquare;          //площадь полной поверхности куба
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+
+            Console.Write("Input total surface square of a cube " +
+                Environment.NewLine + "--> ");
+            cubeSquare = double.Parse(Console.ReadLine());
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            Console.WriteLine(Environment.NewLine + "RESULT:" +
+                Environment.NewLine + "The size of the cube edge = {0:F2}",
+                Math.Sqrt(cubeSquare / 6));
+        }
+    }
+}
