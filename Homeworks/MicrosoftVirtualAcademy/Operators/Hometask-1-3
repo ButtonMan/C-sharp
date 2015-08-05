@@ -1,0 +1,55 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Для произвольных значений аргументов вычислить значение функции, заданной
+ *  следующим образом:
+ *  y = SQRT(X^2 - 1)
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double num;                                    //произвольное число
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.WriteLine("Input any number:");
+            num = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            if (0 != Math.Sqrt(Math.Pow(num,2) - 1))
+            {
+                //вычисление значения функции  SQRT(X^2 - 1)
+                Console.WriteLine(Environment.NewLine + "RESULT: " + 
+                    Environment.NewLine +
+                    "y = SQRT(X^2 - 1) = SQRT({0:F}^2 - 1) = {1:F}", num, 
+                    Math.Sqrt(Math.Pow(num, 2) - 1));
+            }
+            else
+            {
+                //уравнение не имеет решений
+                Console.WriteLine(Environment.NewLine + "RESULT:" +
+                    Environment.NewLine + "y = SQRT(X^2 - 1) => " +
+                    "the equation has no solution");
+            }
+        }
+    }
+}
