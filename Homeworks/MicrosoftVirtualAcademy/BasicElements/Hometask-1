@@ -1,0 +1,47 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая, реализует диалог с пользователем, запрашивает 
+ *  с клавиатуры два целых числа, и выводит на экран сумму данных чисел.
+ */
+//+---------------------------------------------------------------------------+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__1._1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЬЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int A = 0;
+            int B = 0;
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //инициализация пользователем переменной А
+            Console.Write("Input value of the \"A\" variable:" +
+                Environment.NewLine + "--> ");
+            A = int.Parse(Console.ReadLine());
+
+            //инициализация пользователем переменной B
+            Console.Write("Input value of the \"B\" variable:" +
+                Environment.NewLine + "--> ");
+            B = int.Parse(Console.ReadLine());
+
+            //вывод на экран суммы A + B
+            Console.WriteLine(Environment.NewLine + "RESULT:" +
+                Environment.NewLine + "{0,0:N0} + {1,0:N0} = {2,0:N0}", A, B, 
+                A + B);
+        }
+    }
+}
