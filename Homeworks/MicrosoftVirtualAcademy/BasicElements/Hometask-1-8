@@ -1,0 +1,51 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая, реализует диалог с пользователем, запрашивает 
+ *  сумму вклада и процент по вкладу, и выводит размер начисления по вкладу. 
+ *  (вклад без капитализации – все начисления в конце года)
+ */
+//+---------------------------------------------------------------------------+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__1._8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ И ИНИЦИАЛИЗАЦИЯ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            decimal depositAmount = 0;      //сумма вклада
+            double depositInterest = 0;     //процент по вкладу
+
+
+
+            //ВВОД ДАННЫХ ПОЛЬЗОВАТЕЛЯ
+            //+---------------------------------------------------------------+
+
+            //присвоение значения переменной "сумма вклада"
+            Console.Write("Input deposit amount" + Environment.NewLine + 
+                "-->");
+            depositAmount = decimal.Parse(Console.ReadLine());
+
+            //присвоение значения переменной "процент по вкладу"
+            Console.Write("Input deposit interest" + Environment.NewLine +
+                "-->");
+            depositInterest = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //вывод на экран размера начисления по вкладу за год
+            Console.WriteLine("Accrual at the end of the year: {0:C2} ",
+                depositAmount * (decimal)depositInterest / 100);
+        }
+    }
+}
