@@ -1,0 +1,55 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Для произвольных значений аргументов вычислить значение функции, заданной
+ *  следующим образом:
+ *  y = 3 / |X^3 + 8| 
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double num;                                    //произвольное число
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.WriteLine("Input any number:");
+            num = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            if (Math.Pow(num, 3) + 8 != 0)
+            {
+                //вычисление значения функции  y = 3 / |X^3 + 8|
+                Console.WriteLine(Environment.NewLine + "RESULT: " +
+                    Environment.NewLine +
+                    "y = 3 / |X^3 + 8| = 3 / |{0:F}^3 + 8|= {1:F}",
+                    num, 3 / (Math.Abs(Math.Pow(num, 3) + 8)));
+            }
+            else
+            {
+                //уравнение не имеет решений
+                Console.WriteLine(Environment.NewLine + "RESULT:" +
+                    Environment.NewLine + "y = 3 / |X^3 + 8| => " +
+                    "the equation has no solution");
+            }
+        }
+    }
+}
