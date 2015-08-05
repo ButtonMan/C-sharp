@@ -1,0 +1,51 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая подсчитывает ппериметр прямоугольного 
+ *  треугольника по двум катетам a, b.
+ */
+//+---------------------------------------------------------------------------+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__2._5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+
+            double cathetus_a;          //катет прямоугольного треугольника "а"
+            double cathetus_b;          //катет прямоугольного треугольника "b"
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+
+            //инициализация переменной "катет А"
+            Console.Write("Input cathetus A value" + Environment.NewLine +
+                "--> ");
+            cathetus_a = double.Parse(Console.ReadLine());
+
+            //инициализация переменной "катет B"
+            Console.Write("Input cathetus B value" + Environment.NewLine +
+                "--> ");
+            cathetus_b = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            Console.WriteLine(Environment.NewLine + "RESULT" +
+                Environment.NewLine + "Perimeter of a right triangle = {0:F2}",
+                Math.Sqrt(Math.Pow(cathetus_a, 2) - Math.Pow(cathetus_b, 2)));
+        }
+    }
+}
