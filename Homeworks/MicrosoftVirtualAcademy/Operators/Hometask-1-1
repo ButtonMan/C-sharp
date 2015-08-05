@@ -35,7 +35,7 @@ namespace ConsoleApplication1
 
             //РЕШЕНИЕ ЗАДАЧИ
             //+---------------------------------------------------------------+
-            if(num != 0)
+            if(num != -1)
             {
                 //вычисление значения функции  1 / (1 + x)^2
                 Console.WriteLine(Environment.NewLine + "RESULT: " + 
@@ -46,7 +46,7 @@ namespace ConsoleApplication1
             else
             {
                 //уравнение не имеет решений
-                Console.WriteLine(Environment.NewLine + "RERESULT:" +
+                Console.WriteLine(Environment.NewLine + "RESULT:" +
                     Environment.NewLine + "the equation has no solution");
             }
         }
