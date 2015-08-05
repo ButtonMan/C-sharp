@@ -1,0 +1,48 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая определяет наименьшую цифру в натуральном 
+ *  двухзначном числе.
+ */
+//+---------------------------------------------------------------------------+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__3._2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int number;                                 //натуральное число
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+
+            //инициализация переменной number
+            Console.Write("Input two-digit natural number" +
+                Environment.NewLine + "--> ");
+            number = int.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //вывод на экран минимального значения из двух имеющихся чисел,
+            //входящих в состав двухзначеного натурального числа
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine +
+                "Minimum number of two digits from natural number is = {0}",
+                Math.Min(number % 10, (number / 10) % 10));
+
+        }
+    }
+}
