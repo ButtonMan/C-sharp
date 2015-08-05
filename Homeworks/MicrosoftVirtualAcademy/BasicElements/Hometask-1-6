@@ -1,0 +1,53 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая, реализует диалог с пользователем, запрашивает 
+ *  с клавиатуры три вещественных числа, и выводит на экран 
+ *  слудующее: (A + B) + C = A + (B + C)
+ */
+//+---------------------------------------------------------------------------+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__1._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЬЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double A = 0;
+            double B = 0;
+            double C = 0;
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //инициализация пользователем переменной А
+            Console.Write("Input value of the \"A\" variable:" +
+                Environment.NewLine + "--> ");
+            A = double.Parse(Console.ReadLine());
+
+            //инициализация пользователем переменной B
+            Console.Write("Input value of the \"B\" variable:" +
+                Environment.NewLine + "--> ");
+            B = double.Parse(Console.ReadLine());
+
+            //инициализация пользователем переменной C
+            Console.Write("Input value of the \"C\" variable:" +
+                Environment.NewLine + "--> ");
+            C = double.Parse(Console.ReadLine());
+
+            //вывод не экран выражения вида: (A + B) * C = A + (B * C)
+            Console.WriteLine(Environment.NewLine + "RESULT" + Environment.NewLine +
+                "({0,0:F2} + {1,0:F2}) + {2,0:F2} = {0,0:F2} + ({1,0:F2} + {2,0:F2})",
+                A, B, C);
+        }
+    }
+}
