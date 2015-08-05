@@ -1,0 +1,49 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая определяет кратна ли числу А сумма цифр 
+ *  двухзначного числа;
+ */
+//+---------------------------------------------------------------------------+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__3._6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int number;                              //произвольное число
+            int divider;                             //делитель
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+
+            //инициализация переменной number
+            Console.Write("Input any integer number" +
+                Environment.NewLine + "--> ");
+            number = int.Parse(Console.ReadLine());
+
+            Console.Write("Input any divider" +
+                Environment.NewLine + "--> ");
+            divider = int.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            Console.WriteLine(Environment.NewLine + "RESULT" +
+                Environment.NewLine + "Sum of digits of a two-digit number "
+                + "{0} {1}", (((number % 10 + number / 10 % 10) % divider) == 0)?
+                "is divisible by " : "is not divisible by ", divider);
+        }
+    }
+}
