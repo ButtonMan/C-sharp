@@ -37,7 +37,7 @@ namespace HT_1_2
             //+---------------------------------------------------------------+
             if (0 != Math.Pow(num, 2) - 1)
             {
-                //вычисление значения функции  1 / (1 + x)^2
+                //вычисление значения функции  1 / (X^2 - 1)
                 Console.WriteLine(Environment.NewLine + "RESULT: " + 
                     Environment.NewLine +
                     "y = 1 / (X^2 - 1) = 1 / ({0:F}^2 - 1) = {1:F}", num, 
@@ -47,7 +47,8 @@ namespace HT_1_2
             {
                 //уравнение не имеет решений
                 Console.WriteLine(Environment.NewLine + "RESULT:" +
-                    Environment.NewLine + "the equation has no solution");
+                    Environment.NewLine +  "1 / (X^2 - 1) = >" +
+                    "the equation has no solution");
             }
         }
     }
