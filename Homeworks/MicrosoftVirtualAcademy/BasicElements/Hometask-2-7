@@ -1,0 +1,42 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая подсчитывает ребро куба, объем которого равен v
+ */
+//+---------------------------------------------------------------------------+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__2._7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+
+            double cubeVolume;          //объем полной поверхности куба
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+
+            Console.Write("Input volume of a cube " +
+                Environment.NewLine + "--> ");
+            cubeVolume = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            Console.WriteLine(Environment.NewLine + "RESULT:" +
+                Environment.NewLine + "The size of the cube edge = {0:N2}",
+                Math.Pow(cubeVolume, 1 / 3));
+        }
+    }
+}
