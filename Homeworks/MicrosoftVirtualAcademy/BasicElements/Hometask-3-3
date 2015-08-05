@@ -1,0 +1,50 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая определяет одинаковы ли цифры данного 
+ *  двухзначного числа.
+ */
+//+---------------------------------------------------------------------------+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__3._3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int number;                                 //натуральное число
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+
+            //инициализация переменной number
+            Console.Write("Input two-digit natural number" +
+                Environment.NewLine + "--> ");
+            number = int.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //вывод на экран результат проверки на равность значений двух 
+            //имеющихся чисел, входящих в состав двухзначеного натурального 
+            //числа
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine +
+                "Two digits from natural number are - {0}",
+                (Math.Equals(number % 10, (number / 10) % 10))?"equal":
+                "not equal");
+
+        }
+    }
+}
