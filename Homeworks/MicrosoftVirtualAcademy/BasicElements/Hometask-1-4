@@ -1,0 +1,48 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕЕ ЗАДАЧИ:
+ *  Написать программу, которая, реализует диалог с пользователем, запрашивает 
+ *  с клавиатуры два вещественных числа, и выводит на экран произведение
+ *  данных чисел. (вещественные числа выводятся с точностью до 1 знака после 
+ *  запятой)
+ */
+//+---------------------------------------------------------------------------+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__1._4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЬЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double A = 0;
+            double B = 0;
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //инициализация пользователем переменной А
+            Console.Write("Input value of the \"A\" variable:" +
+                Environment.NewLine + "--> ");
+            A = double.Parse(Console.ReadLine());
+
+            //инициализация пользователем переменной B
+            Console.Write("Input value of the \"B\" variable:" +
+                Environment.NewLine + "--> ");
+            B = double.Parse(Console.ReadLine());
+
+            //вывод на экран произведения A * B
+            Console.WriteLine(Environment.NewLine + "RESULT:" +
+                Environment.NewLine + "{0,0:F1} * {1,0:F1} = {2,0:F1}", 
+                A, B, A * B);
+        }
+    }
+}
