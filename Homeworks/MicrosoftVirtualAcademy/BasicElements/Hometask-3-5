@@ -1,0 +1,47 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая определяет кратна ли трем сумма цифр 
+ *  двухзначного числа;
+ */
+//+---------------------------------------------------------------------------+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__3._5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int number;                                 //произвольное число
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+
+            //инициализация переменной number
+            Console.Write("Input any integer number" +
+                Environment.NewLine + "--> ");
+            number = int.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //выполнение проверки, кратна ли трем сумма цифр двухзначного числа
+
+            Console.WriteLine(Environment.NewLine + "RESULT:" +
+                Environment.NewLine + "Sum of figures of the two digit number {0}",
+                ((number % 10 + number / 10 % 10 + number / 100 % 10) % 3 == 0)?
+                "is multiple of three" : "is not multiple of three");
+        }
+    }
+}
