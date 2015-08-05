@@ -1,0 +1,48 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Написать программу, которая подсчитывает расстояние между точками с 
+ *  координатами x1, y1 и x2,y2;
+ */
+//+---------------------------------------------------------------------------+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DZ__2._2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ И ИНИЦИАЛИЗАЦИЯ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double X1 = 0;
+            double Y1 = 0;
+            double X2 = 0;
+            double Y2 = 0;
+
+
+            //ВВОД ЗНАЧЕНИЙ ПЕРЕМЕННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.WriteLine("Input coordinate X1, Y1 and X2, Y2 values:");
+            Console.Write("X1 --> ");
+            X1 = double.Parse(Console.ReadLine());
+            Console.Write("Y1 --> ");
+            Y1 = double.Parse(Console.ReadLine());
+            Console.Write("X2 --> ");
+            X2 = double.Parse(Console.ReadLine());
+            Console.Write("Y2 --> ");
+            Y2 = double.Parse(Console.ReadLine());
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            Console.WriteLine(Environment.NewLine + "RESULT:" +
+                Environment.NewLine + "The distance between the coordinates - "
+                + "{0:F2}", Math.Sqrt(Math.Pow(X2 - X1, 2) + Math.Pow(Y2 - Y1, 2)));
+        }
+    }
+}
