@@ -1,0 +1,47 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран числа следующим образом:
+ *  8
+ *  7
+ *  7 7
+ *  6 6
+ *  6 6 6
+ *  5 5 5
+ *  5 5 5 5
+ *  4 4 4 4
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_5_7
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            for(int i = 0; i < 4; ++i)
+            {
+                for(int c = 0; c < i + 1; ++c)
+                {
+                    Console.Write("{0,-2}", 8 - i);
+                }
+                Console.WriteLine();
+                for(int z = 0; z < i + 1; ++z)
+                {
+                    Console.Write("{0,-2}", 8 - i - 1);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
