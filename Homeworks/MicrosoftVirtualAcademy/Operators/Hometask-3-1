@@ -52,3 +52,27 @@ namespace HT_3_1
                 Console.WriteLine("- {0}", month = (Month)counter);
             } while (counter < numberOfMonths);
         }
+
+
+
+        //ОБЪЯВЛЕНИЕ ПЕРЕЧИСЛЕНИЯ
+        //+-------------------------------------------------------------------+       
+       
+        //::названия месяцев года
+        enum Month : int
+        {
+            January = 1,
+            February,
+            March,
+            April,
+            May,
+            June,
+            July,
+            August,
+            September,
+            October,
+            November,
+            December,
+        }
+    }
+}
