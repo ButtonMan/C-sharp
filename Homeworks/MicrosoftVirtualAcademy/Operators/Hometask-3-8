@@ -1,0 +1,107 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дан возраст человека мужского пола в годах. Вывести на экран возрастную 
+ *  категорию: 
+ *  до года – «младенец», 
+ *  от года до 11 лет – «ребенок», 
+ *  от 12 до 15 лет – «подросток», 
+ *  от 16 до 25 лет – «юноша», 
+ *  от 26 до 70 лет – «мужчина», 
+ *  более 70 лет – «пожилой человек».
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double age;
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+
+            //::инициализация переменной "возраст" - age
+            Console.Write("Input your age " + Environment.NewLine + "--> ");
+            age = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::определение возраста
+            Console.Write(Environment.NewLine + "RESULT: " + 
+                Environment.NewLine + "Your category age: ");
+            if (age < 1)
+            {
+                Console.WriteLine(AgeCategory.baby);
+            }
+            else
+            {
+                if (age >= 1 && age <= 11)
+                {
+                    Console.WriteLine(AgeCategory.child);
+                }
+                else
+                {
+                    if (age >= 12 && age <= 15)
+                    {
+                        Console.WriteLine(AgeCategory.teenager);
+                    }
+                    else
+                    {
+                        if (age >= 16 && age <= 25)
+                        {
+                            Console.WriteLine(AgeCategory.youth);
+                        }
+                        else
+                        {
+                            if (age >= 26 && age <= 70)
+                            {
+                                Console.WriteLine(AgeCategory.man);
+                            }
+                            else
+                            {
+                                if (age >= 71)
+                                {
+                                    Console.WriteLine(AgeCategory.elderly);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        //ОБЪЯВЛЕНИЕ ПЕРЕЧИСЛЕНИЙ
+        //+-------------------------------------------------------------------+
+
+        //::категории возраста
+        enum AgeCategory : int
+        {
+            baby = 1,
+            child,
+            teenager,
+            youth,
+            man,
+            elderly,
+        }
+
+    }
+}
