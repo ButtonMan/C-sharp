@@ -1,0 +1,64 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран: 
+ *  все целые числа из диапазона от А до В (А<=В), оканчивающиеся на любую 
+ *  четную цифру;
+ *  
+ *  !Замечание. При решении задачи можно использовать любой из операторов цикла 
+ *  while, do while и for. Свой выбор обоснуйте
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_4_3
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Random rnd = new Random();          //генератор случайных чисел
+            int randomNummber;                  //случайное число
+            int numberOfIterations = 20;        //количество повторений цикла
+            int counter = 0;                    //cчетчик итераций цикла
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::генерация и отбор случайных чисел оканчивающихся на любую 
+            //  четную цифру
+            Console.WriteLine(Environment.NewLine + "RESULT: "
+                +Environment.NewLine);
+            Console.WriteLine("{0,3}{1,13}{2,11}" + Environment.NewLine,
+                "ID", "rndNumber", "isMatches");
+
+            while(counter < numberOfIterations)
+            {
+                randomNummber = rnd.Next(10, 30);
+                if(randomNummber % 10 % 2 == 0)
+                {
+                    Console.WriteLine("{0,2:D}){1,10:D}{2,11}", counter + 1, 
+                        randomNummber, "(+)");
+                }
+                else
+                {
+                    Console.WriteLine("{0,2:D}){1,10:D}{2,11}", counter + 1, 
+                        randomNummber, "(-)");
+                }
+                ++counter;
+            }
+
+        }
+    }
+}
