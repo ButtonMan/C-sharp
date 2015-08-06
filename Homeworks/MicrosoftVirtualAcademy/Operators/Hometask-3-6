@@ -1,0 +1,80 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Проведен тест, оцениваемый в целочисленный баллах от нуля до ста. Вывести 
+ *  на экран оценку тестируемого в зависимости от набранного количества баллов: 
+ *  от 90 до 100 – «отлично», от 70 до 89 – «хорошо», 
+ *  от 50 до 69 – «удовлетворительно», 
+ *  менее 50 – «неудовлетворительно».
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Mark mark;                              //перечисления оценок
+            int studentMark;                        //оценка студента
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.Write("Input student mark (from 0 till 100)"+Environment.NewLine + "--> ");
+            studentMark = int.Parse(Console.ReadLine());
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            Console.Write(Environment.NewLine + "RESULT: " + 
+                Environment.NewLine + "Student mark: ");
+            if (studentMark >= 90 && studentMark <= 100)
+            {
+                Console.WriteLine(Mark.excellent);
+            }
+            else 
+            {
+                if (studentMark < 90 && studentMark >= 50)
+                {
+                    Console.WriteLine(Mark.satisfactorily);
+                }        
+                else
+                {
+                    if (studentMark < 50 && studentMark >= 0)
+                    {
+                        Console.WriteLine(Mark.unsatisfactorily);
+                    }
+                    else
+                    {
+                        Console.WriteLine("!Wrong number of student scores!");
+                    }
+                }
+            }
+        }
+     
+
+
+        //ОБЪЯВЛЕНИЕ ПЕРЕЧИСЛЕНИЙ
+        //+-------------------------------------------------------------------+
+
+        //::градация оценок студента
+        enum Mark : int
+        {
+            excellent = 1,
+            satisfactorily,
+            unsatisfactorily,
+        }
+    }
+}
