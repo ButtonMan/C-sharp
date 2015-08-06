@@ -1,0 +1,39 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран числа следующим образом:
+ *  6 6 6 6 6
+ *  7 7 7 7
+ *  8 8 8
+ *  9 9
+ *  10
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_5_4
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            for(int i = 5; i < 10; ++i)
+            {
+                for(int c = 0; c < (10-i); ++c)
+                {
+                    Console.Write("{0,-2}", i + 1);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
