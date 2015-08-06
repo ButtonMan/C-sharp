@@ -1,0 +1,99 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дано расписание приемных часов врача. Вывести на экран приемные часы врача 
+ *  в заданный день недели (расписание придумать самостоятельно).
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int dayId;                                      //номер дня недели
+            Weekday weekday;                                //день недели
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+
+            //::ввод номера дня недели
+            Console.Write("Input the day of the week " + Environment.NewLine +
+                "--> ");
+            dayId = int.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            switch (dayId)
+            {
+                case (int)Weekday.Monday:
+                case (int)Weekday.Tuesday:
+                case (int)Weekday.Wednesday:
+                case (int)Weekday.Thursday:
+                case (int)Weekday.Friday:
+                    Console.WriteLine(Environment.NewLine +"Working time: " + 
+                        Environment.NewLine + "from \"{0}\" till \"{1}" +
+                        "\" o\'clock", WorkingHours.nine, 
+                        WorkingHours.eighteen);
+                    break;
+                case (int)Weekday.Saturday:
+                    Console.WriteLine("day off");
+                    break;
+                case (int)Weekday.Sunday:
+                    Console.WriteLine("day off");
+                    break;
+                default:
+                    Console.WriteLine("***!Wrong number of the weekday!***");
+                    break;
+            }
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ ПЕРЕЧИСЛЕНИЯ
+        //+-------------------------------------------------------------------+
+
+        //::рабочее время
+        enum WorkingHours : int
+        {
+            nine = 9,
+            ten,
+            eleven,
+            twelve,
+            thirteen,
+            fourteen,
+            fifteen,
+            sixteen,
+            seventeen,
+            eighteen,
+        }
+
+        //::рабочие дни недели
+        enum Weekday : int
+        {
+            Monday = 1,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday,
+            Sunday,
+        }
+    }
+}
