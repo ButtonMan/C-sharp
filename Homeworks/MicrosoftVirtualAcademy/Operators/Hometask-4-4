@@ -45,7 +45,7 @@ namespace HT_4_2
             while(counter < numberOfIterations)
             {
                 randomNummber = rnd.Next(-10, 10);
-                if(randomNummber > 0)
+                if(randomNummber >= 0)
                 {
                     Console.WriteLine("{0,2:D}){1,10:D}{2,11}", counter + 1, 
                         randomNummber, "(+)");
