@@ -1,0 +1,58 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дан пол человека: м – мужчина, ж – женщина. Вывести на экран возможные 
+ *  мужские и женские имена в зависимости от введенного пола.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string sex;                             //пол человека
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.Write("Input your sex (m - man, w - woomen)" +
+                Environment.NewLine + "--> ");
+            sex = Console.ReadLine();
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::вывод списка имен соответстующих полу респондента
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            switch(sex)
+            {
+                case "m":
+                    Console.WriteLine("Mans names: Bart, Barty, Bartlett, " +
+                        "Bartley, Bat, Batty");
+                    break;
+                case "w":
+                    Console.WriteLine("Womens names: Ann, Annie, Nancy, " + 
+                        "Nancie,Nance, Nan, Nana, Nanny, Nanette, Nannette, Nina");
+                    break;
+                default:
+                    Console.WriteLine("!Wrong value of sex!");
+                    break;
+            }
+        }
+    }
+}
