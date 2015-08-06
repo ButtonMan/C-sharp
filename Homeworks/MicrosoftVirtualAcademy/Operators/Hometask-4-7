@@ -1,0 +1,60 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран: 
+ *  только отрицательные четные числа из диапазона от А до В (А<=В);
+ *  
+ *  !Замечание. При решении задачи можно использовать любой из операторов цикла 
+ *  while, do while и for. Свой выбор обоснуйте
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_4_7
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Random rnd = new Random();          //генератор случайных чисел
+            int randomNummber;                  //случайное число
+            int numberOfIterations = 20;        //количество повторений цикла
+            int counter = 0;                    //cчетчик итераций цикла
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::генерация случайных чисел и отбор среди них четных чисел 
+            //  значение которых меньше нуля
+            Console.WriteLine(Environment.NewLine + "RESULT: "
+                +Environment.NewLine);
+            Console.WriteLine("{0,3}{1,13}{2,11}" + Environment.NewLine,
+                "ID", "rndNumber", "isMatches");
+
+            while(counter < numberOfIterations)
+            {
+                randomNummber = rnd.Next(-100, 100);
+                if (randomNummber % 2 == 0 && randomNummber < 0)
+                {
+                    Console.WriteLine("{0,3:D}{1,9:D}{2,12}",counter + 1, randomNummber, "(+)");
+                }
+                else
+                {
+                    Console.WriteLine("{0,3:D}{1,9:D}{2,11}", counter + 1, randomNummber, "-");
+                }
+                ++counter;
+            }
+        }
+    }
+}
