@@ -23,36 +23,35 @@ namespace HT_3_1
         {
             //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
             //+---------------------------------------------------------------+
+            int monthId;                                    //номер месяца
             Month month;                                    //месяцы года
-            const int numberOfMonths = 12;                  //колич. месяцев
-            int counter = 0;                                //счетчик месяцев
+
+
 
             //ВВОД ДАННЫХ С КЛАВИАТУРЫ
             //+---------------------------------------------------------------+
             Console.Write("Input any number of month to get it name" +
                 Environment.NewLine + "--> ");
-            month = (Month)int.Parse(Console.ReadLine());
+            monthId = int.Parse(Console.ReadLine());
+
 
 
             //РЕШЕНИЕ ЗАДАЧИ
             //+---------------------------------------------------------------+
             
             //::вывод выбранного пользователем месяца
-            Console.WriteLine(Environment.NewLine + "RESULT: " +
-                Environment.NewLine + "Month: {0}", month);
-
-
-            //::вывод всех названий месяцев
-
-            do 
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            if (monthId >= (int)Month.January && monthId <= (int)Month.December)
             {
-                if (counter == 0) Console.WriteLine(Environment.NewLine + 
-                    "Print all months names:");
-                ++counter;
-                Console.WriteLine("- {0}", month = (Month)counter);
-            } while (counter < numberOfMonths);
+                month = (Month)monthId;
+                Console.WriteLine("Name of the Month  - {0}", month);
+            }
+            else
+            {
+                Console.WriteLine("there is no such number of manth!");
+            }
         }
-
+        
 
 
         //ОБЪЯВЛЕНИЕ ПЕРЕЧИСЛЕНИЯ
