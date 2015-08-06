@@ -1,0 +1,71 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран: 
+ *  все целые числа из диапазона от А до В (А<=В), оканчивающиеся на цифру Х;
+ *  Замечание. При решении задачи можно использовать любой из операторов цикла 
+ *  while, do while и for. Свой выбор обоснуйте
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Random rnd = new Random();          //генератор случайных чисел
+            int num;                            //искомая цифра числа
+            int rndNumber;                      //случайное число
+            int numOfIterations = 50 ;          //число итерации цикла при 
+                                                //генерировании случайных чисел
+            int counter = 0;                    //счетчик
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            
+            //::ввод критерия поиска среди массива чисел
+            Console.Write("Input number (from 1 to 9): " + Environment.NewLine +
+                "--> ");
+            num = (int)char.GetNumericValue(Convert.ToChar(Console.Read()));
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::генерирование и отбор случайных чисел соответствующих 
+            //  заданному критерию поиска => num - цифра, которая должна 
+            //  присутствовать в конце каждого из сгенерированных чисел)
+            Console.WriteLine(Environment.NewLine + "RESULT" + 
+                Environment.NewLine + "List of numbers, the last digit which" +
+            "is equal to {0}", num);
+            while(counter < numOfIterations)
+            {
+                rndNumber = rnd.Next(10, 30);
+                if(rndNumber % 10 == num)
+                {
+                    Console.WriteLine("{0,3:D}){1,4:D}{2,4}", counter + 1, rndNumber, "(+)");
+                }
+                else
+                {
+                    Console.WriteLine("{0,3:D}){1,4:D}{2,3}", counter + 1, rndNumber, "-");
+                }
+                ++counter;
+            }
+
+        }
+    }
+}
