@@ -1,0 +1,38 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран числа следующим образом:
+ *  1 2 3 … 10
+ *  1 2 3 … 10
+ *  1 2 3 … 10
+ *  1 2 3 … 10
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_5_2
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            for(int row = 0; row < 4; ++row)
+            {
+                for(int column = 0; column < 10; ++column)
+                {
+                    Console.Write("{0} ", column + 1);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
