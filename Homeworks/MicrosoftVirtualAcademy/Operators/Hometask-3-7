@@ -38,7 +38,7 @@ namespace HT_3_7
             //+---------------------------------------------------------------+
             Console.WriteLine(Environment.NewLine + "RESULT: " +
                 Environment.NewLine + "Zodiacs name: {0, 6}",
-                (zodiacs = (Zodiacs)(Math.Abs(year - 1900) % 12)));
+                (zodiacs = (Zodiacs)(year % 12)));
 
         }
      
