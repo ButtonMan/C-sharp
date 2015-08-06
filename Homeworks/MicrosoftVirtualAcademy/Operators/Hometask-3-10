@@ -1,0 +1,97 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дан признак транспортного средства: 
+ *  a – автомобиль, 
+ *  в – велосипед, 
+ *  м – мотоцикл, 
+ *  с – самолет, 
+ *  п – поезд. 
+ *  Вывести на экран максимальную скорость транспортного средства в 
+ *  зависимости от введенного признака.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string typeOfVehicle;                             //вид транспорта
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            
+            //::ввод данных о виде транспорта
+            Console.Write("Введите обозначение вашего транспорта" + 
+                Environment.NewLine + "a – автомобиль" +
+                Environment.NewLine + "в – велосипед" +
+                Environment.NewLine + "м – мотоцикл" +
+                Environment.NewLine + "с – самолет" +
+                Environment.NewLine + "п – поезд"  +
+                Environment.NewLine + "--> ");
+            typeOfVehicle = Console.ReadLine();
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::определение лимитов скорости для соответствующего вида 
+            //  транспорта
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            switch (typeOfVehicle)
+            {
+                case "а":
+                    Console.WriteLine("Транспорт - {0}, speed limit - {1}",
+                        Vehicle.автомобиль, 60);
+                    break;
+                case "в":
+                    Console.WriteLine("Транспорт - {0}, speed limit - {1}",
+                        Vehicle.велосипед, 10);
+                    break;
+                case "м":
+                    Console.WriteLine("Транспорт - {0}, speed limit - {1}",
+                        Vehicle.мотоцикл, 60);
+                    break;
+                case "с":
+                    Console.WriteLine("Транспорт - {0}, speed limit - {1}",
+                        Vehicle.самолет, 1000);
+                    break;
+                case "п":
+                    Console.WriteLine("Транспорт - {0}, speed limit - {1}",
+                        Vehicle.поезд, 500);
+                    break;
+                default:
+                    Console.WriteLine("!Указан неверный тип транспорта!");
+                    break;
+            }
+        }
+
+        //ОБЪЯВЛЕНИЕ ПЕРЕЧИСЛЕНИЙ
+        //+-------------------------------------------------------------------+
+
+        //::категории транспорта
+        enum Vehicle : int
+        {
+            автомобиль = 1, 
+            велосипед, 
+            мотоцикл, 
+            самолет, 
+            поезд,
+        }
+    }
+}
