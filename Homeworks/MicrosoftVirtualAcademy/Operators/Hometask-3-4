@@ -1,0 +1,96 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дан номер масти m (1 <= m <= 4) и номер достоинства карты k (1 <= k <= 14). 
+ *  Определить полное название соответствующей карты в виде «дама пик», 
+ *  «шестерка бубен» и т.д.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_4
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            CardWeight Card;                        //перечисление карт
+            int cardId;                             //Id карты
+            CardSuit Suit;                          //перечисоение мастей карт
+            int suitId;                             //Id масти карты
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            
+            //:: ввод информации о карте
+            Console.WriteLine("Input information about the card:");
+            Console.Write("{0,20} ", "- card Id (from 2 to 14):");
+            cardId = int.Parse(Console.ReadLine());
+            Console.Write("{0,20} ", "- suit Id (from 1 to  4):");
+            suitId = int.Parse(Console.ReadLine());
+    
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::вывод на экран названия карты
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            if (cardId >= (int)CardWeight.deuce && 
+                cardId <= (int)CardWeight.ace &&
+                suitId >= 1 && suitId <= 4)
+            {
+                Card = (CardWeight)cardId;  
+                Suit = (CardSuit)suitId;  
+                Console.WriteLine("{0,-15} {1}" + Environment.NewLine +      
+                    "{2, -15} {3}", "card name: ", Card, "card suit:", 
+                    Suit);
+            }
+            else
+            {
+                Console.WriteLine("There is no such type of card!");
+            }
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ ПЕРЕЧИСЛЕНИЯ
+        //+-------------------------------------------------------------------+       
+
+        //::достоинство(ранг) карт
+        enum CardWeight : int
+        {
+            deuce = 2,
+            three,
+            four,
+            five,
+            six,
+            seven,
+            eight,
+            nine,
+            ten,
+            jack,
+            dame,
+            king,
+            ace,
+        }
+        enum CardSuit : int
+        {
+            peaks = 0,
+            clubs,
+            diamonds,
+            worms,
+        }
+    }
+}
