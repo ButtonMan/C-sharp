@@ -1,0 +1,39 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран числа следующим образом:
+ *  4 3 2 1 0
+ *  3 2 1 0
+ *  2 1 0
+ *  1 0
+ *  0
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_5_4
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            for(int i = 0; i < 5; ++i)
+            {
+                for(int c = 4 - i; c >= 0; --c)
+                {
+                    Console.Write("{0,-2}", c);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
