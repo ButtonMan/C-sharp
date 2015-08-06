@@ -1,0 +1,65 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дан год. Вывести на экран название животного, символизирующего этот год по 
+ *  восточному календарю.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_7
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int year;                               //год
+            Zodiacs zodiacs;                        //названия знаков зодиака
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.Write("Input year " + Environment.NewLine + "--> ");
+            year = int.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Zodiacs name: {0, 6}",
+                (zodiacs = (Zodiacs)(Math.Abs(year - 1900) % 12)));
+
+        }
+     
+
+
+        //ОБЪЯВЛЕНИЕ ПЕРЕЧИСЛЕНИЙ
+        //+-------------------------------------------------------------------+
+        enum Zodiacs : int
+        {
+            rat = 0,
+            bull,
+            tiger,
+            rabbit,
+            dragon,
+            snake,
+            horse,
+            sheep,
+            monkey,
+            cock,
+            dog,
+            boar,
+        }
+    }
+}
