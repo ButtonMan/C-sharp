@@ -1,0 +1,65 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран: 
+ *  все трехзначные числа, которые начинаются и заканчиваются на одну и ту же 
+ *  цифру;
+ *  
+ *  !Замечание. При решении задачи можно использовать любой из операторов цикла 
+ *  while, do while и for. Свой выбор обоснуйте
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_4_9
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Random rnd = new Random();          //генератор случайных чисел
+            int randomNumber;                   //случайное число
+            int numberOfIterations = 40;        //количество повторений цикла
+            int counter = 0;                    //cчетчик итераций цикла
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::генерация случайных чисел и отбор среди них всеx трехзначных 
+            //  чисел, которые начинаются и заканчиваются на одну и ту же 
+            *цифру;
+            Console.WriteLine(Environment.NewLine + "RESULT: "
+                +Environment.NewLine);
+            Console.WriteLine("{0,3}{1,13}{2,11}" + Environment.NewLine,
+                "ID", "rndNumber", "isMatches");
+
+            while(counter < numberOfIterations)
+            {
+                randomNumber = rnd.Next(900, 1100);
+                if (randomNumber < 1000 && 
+                   randomNumber / 100 == randomNumber % 10)
+                {
+                    Console.WriteLine("{0,3:D}{1,9:D}{2,12}",counter + 1, 
+                      randomNumber, "(+)");
+                }
+                else
+                {
+                    Console.WriteLine("{0,3:D}{1,9:D}{2,11}", counter + 1, 
+                      randomNumber, "-");
+                }
+                ++counter;
+            }
+        }
+    }
+}
