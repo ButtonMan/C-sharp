@@ -1,0 +1,38 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран числа следующим образом:
+ *  5 5 5 5 5 5
+ *  5 5 5 5 5 5
+ *  5 5 5 5 5 5
+ *  5 5 5 5 5 5
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_4_9
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            for(int row = 0; row < 5; ++row)
+            {
+                for(int column = 0; column < 6; ++ column)
+                {
+                    Console.Write("5 ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
