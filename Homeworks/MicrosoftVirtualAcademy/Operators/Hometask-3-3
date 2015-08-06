@@ -1,0 +1,84 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дан номер карты k (6 <= k <= 14), определить достоинство карты. Достоинства 
+ *  определяются по следующему правилу: «туз» - 14, «король» - 13, «дама» - 12, 
+ *  «валет» - 11, «десятка» - 10, …, «шестерка» - 6.
+ *  !Замечание. При решении данных задач можно использовать как оператор 
+ *  switch, так и вложенные операторы if. Свой выбор обоснуйте.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            CardWeight Card;                            //перечисление карт
+            int cardId;                                 //Id карты
+
+
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            
+            //:: ввод номера карты
+            Console.Write("Input card number Id (from 2 to 14) " + 
+                Environment.NewLine + "--> ");
+            cardId = int.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::вывод на экран названия карты
+            Console.WriteLine(Environment.NewLine + "RESULT: " + 
+                Environment.NewLine);
+            if(cardId >= (int)CardWeight.deuce && cardId <= (int)CardWeight.ace)
+            {
+                Card = (CardWeight)cardId;
+                Console.WriteLine("Card name: {0}", Card);
+            }
+            else
+            {
+                Console.WriteLine("There is no such card!");
+            }
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ ПЕРЕЧИСЛЕНИЯ
+        //+-------------------------------------------------------------------+       
+
+        //::достоинство(ранг) карт
+        enum CardWeight : int
+        {
+            deuce = 2,
+            three,
+            four,
+            five,
+            six,
+            seven,
+            eight,
+            nine,
+            ten,
+            jack,
+            dame,
+            king,
+            ace,
+        }
+    }
+}
