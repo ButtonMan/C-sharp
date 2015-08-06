@@ -1,0 +1,54 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дан порядковый номер месяца, вывести на экран его название.
+ *  !Замечание. При решении данных задач можно использовать как оператор 
+ *  switch, так и вложенные операторы if. Свой выбор обоснуйте.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Month month;                                    //месяцы года
+            const int numberOfMonths = 12;                  //колич. месяцев
+            int counter = 0;                                //счетчик месяцев
+
+            //ВВОД ДАННЫХ С КЛАВИАТУРЫ
+            //+---------------------------------------------------------------+
+            Console.Write("Input any number of month to get it name" +
+                Environment.NewLine + "--> ");
+            month = (Month)int.Parse(Console.ReadLine());
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::вывод выбранного пользователем месяца
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Month: {0}", month);
+
+
+            //::вывод всех названий месяцев
+
+            do 
+            {
+                if (counter == 0) Console.WriteLine(Environment.NewLine + 
+                    "Print all months names:");
+                ++counter;
+                Console.WriteLine("- {0}", month = (Month)counter);
+            } while (counter < numberOfMonths);
+        }
