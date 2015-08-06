@@ -1,0 +1,61 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Вывести на экран: 
+ *  все двухзначные числа, в записи которых все цифры разные;
+ *  
+ *  !Замечание. При решении задачи можно использовать любой из операторов цикла 
+ *  while, do while и for. Свой выбор обоснуйте
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_4_8
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Random rnd = new Random();          //генератор случайных чисел
+            int randomNumber;                   //случайное число
+            int numberOfIterations = 20;        //количество повторений цикла
+            int counter = 0;                    //cчетчик итераций цикла
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::генерация случайных чисел и отбор среди них всех двухзначных 
+            //  чисел, в записи которых все цифры разные
+            Console.WriteLine(Environment.NewLine + "RESULT: "
+                +Environment.NewLine);
+            Console.WriteLine("{0,3}{1,13}{2,11}" + Environment.NewLine,
+                "ID", "rndNumber", "isMatches");
+
+            while(counter < numberOfIterations)
+            {
+                randomNumber = rnd.Next(50, 150);
+                if (randomNumber < 100 && 
+                   randomNumber / 10 != randomNumber % 10)
+                {
+                    Console.WriteLine("{0,3:D}{1,9:D}{2,12}",counter + 1, randomNumber, "(+)");
+                }
+                else
+                {
+                    Console.WriteLine("{0,3:D}{1,9:D}{2,11}", counter + 1, randomNumber, "-");
+                }
+                ++counter;
+            }
+        }
+    }
+}
