@@ -1,0 +1,79 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Постройте таблицу значений функции y=f(x) для хE[a, b] с шагом h.
+ *  Ссылка на уравнение :https://vk.com/photo8599796_376744277?rev=1
+ *  Описание урованения:
+ *  если |X| < 3      => y = sin(x)
+ *  если 3 <= |X| < 9 => y = SQRT(X^2 + 1)/SQRT(X^2 + 5)
+ *  если |X| >= 9     => y = SQRT(X^2 + 1) - SQRT(X^2 + 5)
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_6_2
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double a;                           //начало диапазона значений X
+            double b;                           //конец диапазона значений Y
+            double h;                           //шаг между значениями чисел
+            double y;                           //результат вычисления уравнен.
+
+
+
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Console.Write("Input the a value " + Environment.NewLine +
+                "--> ");
+            a = double.Parse(Console.ReadLine());
+            Console.Write("Input the b value " + Environment.NewLine +
+                "--> ");
+            b = double.Parse(Console.ReadLine());
+            Console.Write("Input the h step value " + Environment.NewLine +
+                "--> ");
+            h = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::вычисление значений заданного уравнения
+            Console.WriteLine(Environment.NewLine + "RESULT: " + 
+                Environment.NewLine);
+            Console.WriteLine("{0,3}{1,5}{2,8}","#","X","f(X)");
+            int i = 0; //счетчик циклов
+            for(double x = a; x < b; x += h, ++i)
+            {
+                if(Math.Abs(x) >= 9)
+                {
+                    y = Math.Sqrt(Math.Pow(x, 2) + 1) - Math.Sqrt(Math.Pow(x, 2) + 5);
+                }
+                else
+                {
+                    if(Math.Abs(x) >= 3)
+                    {
+                        y = Math.Sqrt(Math.Pow(x, 2) + 1) / Math.Sqrt(Math.Pow(x, 2) + 5);
+                    }
+                    else
+                    {
+                        y = Math.Sin(x);
+                    }
+                }
+                Console.WriteLine("{0,3:D}{1,7:F2}{2,6:F2}", i, x, y);
+            }
+        }
+    }
+}
