@@ -1,0 +1,84 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Постройте таблицу значений функции y=f(x) для хE[a, b] с шагом h.
+ *  Ссылка на уравнение : https://vk.com/photo8599796_376752972?rev=1
+ *  Описание урованения:
+ *  если |X| < 0,1        => y = X^3 - 0,1;
+ *  если 0,1<|x|<=0,2     => y = 0,2*X - 0,1;
+ *  если |X|>0,2          => y = X^3 + 0,1;
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_6_4
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double a;                           //начало диапазона значений X
+            double b;                           //конец диапазона значений Y
+            double h;                           //шаг между значениями чисел
+            double y;                           //результат вычисления уравнен.
+
+
+
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Console.Write("Input the a value " + Environment.NewLine +
+                "--> ");
+            a = double.Parse(Console.ReadLine());
+            Console.Write("Input the b value " + Environment.NewLine +
+                "--> ");
+            b = double.Parse(Console.ReadLine());
+            Console.Write("Input the h step value " + Environment.NewLine +
+                "--> ");
+            h = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::вычисление значений заданного уравнения
+            Console.WriteLine(Environment.NewLine + "RESULT: " + 
+                Environment.NewLine);
+            if(b < a) 
+            {
+                Console.WriteLine("!Wrong values => a<=B!");
+                return;
+            }
+            Console.WriteLine("{0,3}{1,5}{2,8}","#","X","f(X)");
+            int i = 1;
+            for (double x = a; x < b; x += h, ++i)
+            {
+                if (Math.Abs(x) > 0.2)
+                {
+                    y = Math.Pow(x, 3) + 0.1;
+                }
+                else
+                {
+                    if (0.1 < Math.Abs(x))
+                    {
+                        y = 0.2 * x - 0.1;
+                    }
+                    else
+                    {
+                        y = Math.Pow(x, 3) - 0.1;
+                    }
+                }
+                Console.WriteLine("{0,2:D}{1,8:F2}{2,6:F2}", i, x, y);
+            }
+        }
+    }
+}
