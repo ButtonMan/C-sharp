@@ -1,0 +1,79 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Постройте таблицу значений функции y=f(x) для хE[a, b] с шагом h.
+ *  Ссылка на уравнение : https://vk.com/album8599796_00?rev=1.
+ *  Описание урованения:
+ *  если X >= 0,9     => y = 1/(0,1 + x^2);
+ *  если 0 <= X < 0,9 => y = 0,2*x + 0,1;
+ *  если X < 0        => y = x^2 + 0,2;
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_5_8
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double a;                           //начало диапазона значений X
+            double b;                           //конец диапазона значений Y
+            double h;                           //шаг между значениями чисел
+            double y;                           //результат вычисления уравнен.
+
+
+
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Console.Write("Input the a value " + Environment.NewLine +
+                "--> ");
+            a = double.Parse(Console.ReadLine());
+            Console.Write("Input the b value " + Environment.NewLine +
+                "--> ");
+            b = double.Parse(Console.ReadLine());
+            Console.Write("Input the h step value " + Environment.NewLine +
+                "--> ");
+            h = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::вычисление значений заданного уравнения
+            Console.WriteLine(Environment.NewLine + "RESULT: " + 
+                Environment.NewLine);
+            Console.WriteLine("{0,3}{1,5}{2,8}", "#", "X", "f(X)");
+            int i = 1;
+            for (double x = a; x < b; x += h, ++i)
+            {
+                if(x >= 0.9)
+                {
+                    y = 1 / (0.1 + Math.Pow(x, 2));
+                }
+                else
+                {
+                    if(x >= 0)
+                    {
+                        y = 0.2 * x + 0.1;
+                    }
+                    else
+                    {
+                        y = Math.Pow(x, 2) + 0.2;
+                    }
+                }
+                Console.WriteLine("{0,3:D}{1,7:F2}{2,6:F2}", i, x, y);
+            }
+        }
+    }
+}
