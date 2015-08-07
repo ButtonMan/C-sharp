@@ -1,0 +1,84 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Постройте таблицу значений функции y=f(x) для хE[a, b] с шагом h.
+ *  Ссылка на уравнение : https://vk.com/photo8599796_376758468?rev=1
+ *  Описание урованения:
+ *  если X^2+2*X+1 < 2            => y = X^2;
+ *  если 2 <= (x^2 + 2X + 1) < 3  => y = 1/(x^2-1);
+ *  если (X^2 + 2X + 1) >= 3      => y = 0;
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_6_6
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double a;                           //начало диапазона значений X
+            double b;                           //конец диапазона значений Y
+            double h;                           //шаг между значениями чисел
+            double y;                           //результат вычисления уравнен.
+
+
+
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            Console.Write("Input the a value " + Environment.NewLine +
+                "--> ");
+            a = double.Parse(Console.ReadLine());
+            Console.Write("Input the b value " + Environment.NewLine +
+                "--> ");
+            b = double.Parse(Console.ReadLine());
+            Console.Write("Input the h step value " + Environment.NewLine +
+                "--> ");
+            h = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::вычисление значений заданного уравнения
+            Console.WriteLine(Environment.NewLine + "RESULT: " + 
+                Environment.NewLine);
+            if(b < a) 
+            {
+                Console.WriteLine("!Wrong values => a<=B!");
+                return;
+            }
+            Console.WriteLine("{0,3}{1,5}{2,8}","#","X","f(X)");
+            int i = 1;
+            for(double X = a; X <= b; X += h, ++i)
+            {
+                if(Math.Pow(X, 2) + 2 * X + 1 >= 3)
+                {
+                    y = 0;
+                }
+                else
+                {
+                    if (2 <= Math.Pow(X, 2) + 2 * X + 1)
+                    {
+                        y = 1 / (Math.Pow(X, 2) - 1);
+                    }
+                    else
+                    {
+                        y = Math.Pow(X, 2);
+                    }
+                }
+                Console.WriteLine("{0,2:D}{1,8:F2}{2,8:F2}", i, X, y);
+            }
+        }
+    }
+}
