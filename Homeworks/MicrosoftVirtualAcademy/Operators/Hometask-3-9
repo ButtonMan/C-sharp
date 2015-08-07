@@ -47,7 +47,8 @@ namespace HT_3_1
                     break;
                 case "w":
                     Console.WriteLine("Womens names: Ann, Annie, Nancy, " + 
-                        "Nancie,Nance, Nan, Nana, Nanny, Nanette, Nannette, Nina");
+                        "Nancie,Nance, Nan, Nana, Nanny, Nanette, Nannette, 
+                        Nina");
                     break;
                 default:
                     Console.WriteLine("!Wrong value of sex!");
