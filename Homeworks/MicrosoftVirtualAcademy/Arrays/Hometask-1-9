@@ -1,0 +1,89 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Cоздать одномерный массив целочисленных значений. Заполнить массив 
+ *  случайными числами. Скопировать полученный массив с импользованием метода 
+ *  IndexOf класса Array.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+--------------------------------------------------------------+
+            int[] array = new int[10];      //массив целочисленных значений
+            Random rnd = new Random();      //генератор случайных чисел    
+
+
+
+            //ВВОД ДАННЫХ
+            //+--------------------------------------------------------------+
+
+            //::заполнение массива случайными целочисленными значениями
+            FillArray(rnd, array);
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+--------------------------------------------------------------+
+
+            //::вывод значений элементов массива на экран
+            Console.WriteLine("Values of array elements");
+            PrintArray(array);
+
+            
+            
+            //::вывод значений элементов массива на экран
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            PrintArray(array);
+            Console.WriteLine("Is there 9: {0}, ID= {1}", 
+                Array.IndexOf(array, 9) >= 0? true: false, 
+                Array.IndexOf(array, 9));
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполнение одномерного массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd"> генератор случайных чисел</param>
+        /// <param name="array"> массив целочисленных значений</param>
+        /// <returns> массив целочисленных значений</returns>
+        static public int[] FillArray(Random rnd, int[] array)
+        {
+            for (int i = 0; i < array.Length; ++i)
+            {
+                array[i] = rnd.Next(-10, 10);
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// вывести на экран значения элементов целочисленного массива
+        /// </summary>
+        /// <param name="array">массив целочисленных значений</param>
+        static public void PrintArray(int[] array)
+        {
+            foreach (int value in array)
+            {
+                Console.Write("{0,-6}", value);
+            }
+            Console.WriteLine();
+        }
+    }
+}
