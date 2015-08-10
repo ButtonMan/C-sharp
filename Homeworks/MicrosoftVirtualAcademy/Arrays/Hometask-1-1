@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HT_6_6
+namespace HT_1_1
 {
     class Program
     {
@@ -22,6 +22,7 @@ namespace HT_6_6
             //+--------------------------------------------------------------+
             int[] array = new int[10];          //массив случайных чисел
             Random rnd = new Random();          //генератор случайных чисел
+
 
 
             //ВВОД ДАННЫХ
@@ -35,13 +36,15 @@ namespace HT_6_6
             PrintArray(array);
         }
 
+
+
         //ОБЪЯВЛЕНИЕ МЕТОДОВ
         //+-------------------------------------------------------------------+
 
         /// <summary>
         /// заполнение массива случайными целочисленными значениями
         /// </summary>
-        /// <param name="rnd">генератор случайных чисел</param>
+        /// <param name="rnd"> генератор случайных чисел</param>
         /// <param name="array"> массив чисел</param>
         /// <returns> заполненный случайными значениями целочисленный 
         /// массив </returns>
@@ -54,6 +57,12 @@ namespace HT_6_6
             return array;
         }
 
+
+
+        /// <summary>
+        /// вывод на экран значений элементов массива
+        /// </summary>
+        /// <param name="array"> массив целых чисел </param>
         static public void PrintArray(int[] array)
         {
             foreach(int value in array)
