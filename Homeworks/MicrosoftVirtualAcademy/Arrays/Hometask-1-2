@@ -1,0 +1,99 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Возвести в квадрат значения элементов одномерного целочисленного массива.
+ *  Вывести их экран, в строчку через пробел.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_6_6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+--------------------------------------------------------------+
+            int[] array = new int[10];          //массив случайных чисел
+            Random rnd = new Random();          //генератор случайных чисел
+
+
+            //ВВОД ДАННЫХ
+            //+--------------------------------------------------------------+
+            FillArray(rnd, array);
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+--------------------------------------------------------------+
+            
+            //::вывод на экран исходных значений элементов массива
+            Console.WriteLine("Array of values (befor)");
+            PrintArray(array);
+
+            //::возведение в квадрат значение элементов массива
+            ToSquare(array);
+
+            //::вывод на экран значений элементов массива
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            PrintArray(array);
+
+
+        }
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполнение массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генератор случайных чисел</param>
+        /// <param name="array"> массив чисел</param>
+        /// <returns> заполненный случайными значениями целочисленный 
+        /// массив </returns>
+        static public int[] FillArray(Random rnd, int[] array)
+        {
+            for (int i = 0; i < array.Length; ++i)
+            {
+                array[i] = rnd.Next(0, 10);
+            }
+            return array;
+        }
+        
+        /// <summary>
+        /// возведение в квадрат целочисленных значений элементов одномерного 
+        /// массива 
+        /// </summary>
+        /// <param name="array">массив</param>
+        /// <returns> массив целочисленных элементов возведенных в квадрат
+        /// </returns>
+        static public int[] ToSquare(int[] array)
+        {
+            for(int i = 0; i < array.Length; ++i)
+            {
+                array[i] *= array[i];
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// вывод на экран значений элементов массива
+        /// </summary>
+        /// <param name="array"> массив целых чисел </param>
+        static public void PrintArray(int[] array)
+        {
+            foreach(int value in array)
+            {
+                Console.Write("{0,-6}", value);
+            }
+            Console.WriteLine();
+        }
+    }
+}
