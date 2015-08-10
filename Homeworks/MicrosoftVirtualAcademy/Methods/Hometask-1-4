@@ -1,0 +1,65 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Создать метод возвращающий значение системы уравнений:
+ *  если x >= 0 => y = x^2,
+ *  если x < 0  => y = 1/x;
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_6_6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+--------------------------------------------------------------+
+            double x;                   //значение переменной X
+
+
+
+            //ВВОД ДАННЫХ
+            //+--------------------------------------------------------------+
+            Console.Write("Input value of X variable" + Environment.NewLine +
+                "--> ");
+            x = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+--------------------------------------------------------------+
+            Console.WriteLine(Environment.NewLine + "RESULT:");
+            Console.WriteLine("y = {0}",Function(x));
+        }
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+        
+        /// <summary>
+        /// вычисление значения системы уравнений
+        /// если x >= 0 => y = x^2
+        /// если x < 0  => y = 1/x
+        /// </summary>
+        /// <param name="x"> переменная уравнения </param>
+        /// <returns> результат вычисления уровнения x^2+x-1 </returns>
+        static public double Function(double x)
+        {
+            if (x >= 0)
+            {
+                return Math.Pow(x, 2);
+            }
+            else
+            {
+                return 1 / x;
+            }
+        }
+    }
+}
