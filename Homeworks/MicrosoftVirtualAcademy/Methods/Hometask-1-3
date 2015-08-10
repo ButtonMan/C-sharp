@@ -1,0 +1,54 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Создать метод возвращающий значение выражения x^2+x-1.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_6_6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+--------------------------------------------------------------+
+            double x;                   //значение переменной X
+
+
+
+            //ВВОД ДАННЫХ
+            //+--------------------------------------------------------------+
+            Console.Write("Input value of X variable" + Environment.NewLine +
+                "--> ");
+            x = double.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+--------------------------------------------------------------+
+            Console.WriteLine(Environment.NewLine + "RESULT:");
+            Console.WriteLine("x^2+x-1 = {0}",Function(x));
+        }
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+        
+        /// <summary>
+        /// вычисление значения функции x^2+x-1
+        /// </summary>
+        /// <param name="x"> переменная уравнения </param>
+        /// <returns> результат вычисления уровнения x^2+x-1 </returns>
+        static public double Function(double x)
+        {
+            return Math.Pow(x, 2) + x - 1;
+        }
+    }
+}
