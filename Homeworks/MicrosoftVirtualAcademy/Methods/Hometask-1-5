@@ -1,0 +1,77 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Создать метод MaxValue возвращающий наибольшее значений из двух чисел. Найти 
+ *  наибольшее значение из 4 чисел, используя вложенный один в другой метод
+ *  MaxValue.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_6_6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+--------------------------------------------------------------+
+            decimal w;                  //произвольное число
+            decimal x;                  //произвольное число
+            decimal y;                  //произвольное число
+            decimal z;                  //произвольное число
+
+
+
+            //ВВОД ДАННЫХ
+            //+--------------------------------------------------------------+
+            Console.Write("Input value of W variable" + Environment.NewLine +
+                "--> ");
+            w = decimal.Parse(Console.ReadLine());
+            Console.Write("Input value of X variable" + Environment.NewLine +
+                "--> ");
+            x = decimal.Parse(Console.ReadLine());
+            Console.Write("Input value of Y variable" + Environment.NewLine +
+                "--> ");
+            y = decimal.Parse(Console.ReadLine());
+            Console.Write("Input value of Z variable" + Environment.NewLine +
+                "--> ");
+            z = decimal.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+--------------------------------------------------------------+
+            Console.WriteLine(Environment.NewLine + "RESULT:");
+            Console.WriteLine("Max value = {0}", MaxValue(MaxValue(w,x), 
+                MaxValue(y,z)));
+        }
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+        
+        /// <summary>
+        /// определение максимального значения
+        /// </summary>
+        /// <param name="x"> произвольное число </param>
+        /// <param name="y"> произвольное число </param>
+        /// <returns> наибольшее значение из двух произвольных чисел</returns>
+        static public decimal MaxValue(decimal x, decimal y)
+        {
+            if(x > y)
+            {
+                return x;
+            }
+            else
+            {
+                return y;
+            }
+        }
+    }
+}
