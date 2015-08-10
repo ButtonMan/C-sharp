@@ -1,0 +1,78 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Cоздать массив вещественных чисел. Заполнить массив случайными значениями.
+ *  Полученный результат вывести на экран.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+--------------------------------------------------------------+
+            double[] array = new double[10];    //массив случайных чисел
+            Random rnd = new Random();          //генератор случайных чисел
+
+
+
+            //ВВОД ДАННЫХ
+            //+--------------------------------------------------------------+
+            
+            //::заполнение массива случайными значениями
+            FillArray(rnd, array);
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+--------------------------------------------------------------+
+
+            //::вывод на экран значений элементов массива
+            Console.WriteLine("RESULT: ");
+            PrintArray(array);
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполнение массива случайными вещественными значениями
+        /// </summary>
+        /// <param name="rnd"> генератор случайных чисел</param>
+        /// <param name="array"> массив чисел</param>
+        /// <returns> заполненный случайными значениями массив </returns>
+        static public double[] FillArray(Random rnd, double[] array)
+        {
+            for (int i = 0; i < array.Length; ++i)
+            {
+                array[i] = rnd.NextDouble() * 10;
+            }
+            return array;
+        }
+        
+        /// <summary>
+        /// вывод на экран значений элементов массива
+        /// </summary>
+        /// <param name="array"> массив целых чисел </param>
+        static public void PrintArray(double[] array)
+        {
+            foreach (double value in array)
+            {
+                Console.Write("{0,-6:N2}", value);
+            }
+            Console.WriteLine();
+        }
+    }
+}
