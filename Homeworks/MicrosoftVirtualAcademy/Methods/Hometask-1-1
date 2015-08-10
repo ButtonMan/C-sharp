@@ -1,0 +1,44 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Создать метод генерирующий случайное число, и обеспечить его вызов в теле 
+ *  метода Main 3 раза.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_6_6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+--------------------------------------------------------------+
+            Console.WriteLine("1) {0,3:D}", GetRndNumber(1, 100));
+            Console.WriteLine("2) {0,3:D}", GetRndNumber(50, 100));
+            Console.WriteLine("3) {0,3:D}", GetRndNumber(1, 50));
+        }
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// генерирование произвольного числа
+        /// </summary>
+        /// <param name="min"> минимальное значение диапазона </param>
+        /// <param name="max"> максимальное значение диапазона</param>
+        /// <returns> случайное целочисесленное значение </returns>
+        static int GetRndNumber(int min, int max)
+        {
+            Random tmpRnd = new Random();
+            return tmpRnd.Next(min, max);
+        }
+    }
+}
