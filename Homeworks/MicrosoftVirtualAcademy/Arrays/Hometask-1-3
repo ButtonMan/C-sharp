@@ -1,0 +1,115 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Возвести на экран все значения элементов массива, значение которых больше
+ *  или равно нулю.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+--------------------------------------------------------------+
+            int[] array = new int[10];          //массив случайных чисел
+            Random rnd = new Random();          //генератор случайных чисел
+
+
+
+            //ВВОД ДАННЫХ
+            //+--------------------------------------------------------------+
+            FillArray(rnd, array);
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+--------------------------------------------------------------+
+            
+            //::вывод на экран исходных значений элементов массива
+            Console.WriteLine("Array of values (befor)");
+            PrintArray(array);
+
+            //::создание нового массива состоящего из положительных 
+            //  целочисленных значений
+            array = GetPositiveValues(array);
+
+            //::вывод на экран положительных значений элементов массива
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            PrintArray(array);
+        }
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполнение массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генератор случайных чисел</param>
+        /// <param name="array"> массив чисел</param>
+        /// <returns> заполненный случайными значениями целочисленный 
+        /// массив </returns>
+        static public int[] FillArray(Random rnd, int[] array)
+        {
+            for (int i = 0; i < array.Length; ++i)
+            {
+                array[i] = rnd.Next(-10, 10);
+            }
+            return array;
+        }
+        
+        /// <summary>
+        /// отобор элементов массива значения которых больше или равны нулю
+        /// </summary>
+        /// <param name="array">исходный массив данных</param>
+        /// <returns>массив положительных целочисленных значений </returns>
+        static public int[] GetPositiveValues(int[] array)
+        {
+            int[] tmpArray = null;      //временный массив
+            int counter = 0;            //счетчик
+            
+            //::подсчет количества значений массива больше или равных нулю
+            foreach(int value in array)
+            {
+                if (value >= 0) ++counter;
+            }
+
+            //::выделение динамической памяти для временного массива
+            tmpArray = new int[counter];
+
+            //::отбор элементов массива значения которых больше или равны нулю
+            for(int i = 0, z = 0; i < array.Length; ++i)
+            {
+                if (array[i] >= 0)
+                {
+                    tmpArray[z] = array[i];
+                    ++z;
+                }
+            }
+
+            return tmpArray;
+        }
+
+        /// <summary>
+        /// вывод на экран значений элементов массива
+        /// </summary>
+        /// <param name="array"> массив целых чисел </param>
+        static public void PrintArray(int[] array)
+        {
+            foreach(int value in array)
+            {
+                Console.Write("{0,-6}", value);
+            }
+            Console.WriteLine();
+        }
+    }
+}
