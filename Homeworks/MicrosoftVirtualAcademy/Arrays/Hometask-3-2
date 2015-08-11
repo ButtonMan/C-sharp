@@ -1,0 +1,146 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Создать двумерный массив. Заполнить случайными целыми числами. Создать
+ *  метод, находящий в массиве наименьшее значение и вычисляющий его номер
+ *  индека.Наименьшее значение увеличить в два раза
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_2
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int[,] array = new int[4,4];    //массив целых чисел
+            int min;                        //минимальное значение в массиве
+            Random rnd = new Random();      //генератор случайных чисел
+            const int multiplier = 2;       //множитель
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::заполнение одномерного массива случайными числами
+            array = FillArray(rnd, array);
+
+            //::вывод на экран значений элементов одномерного массива
+            Print(array);
+
+            //::определение максимального значения элемента одномерного массива
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Min value = {0}" + Environment.NewLine,
+                min = MinValue(array));
+
+            //::умножение всех минимальных значений массива на multiplier
+            Change(multiplier, min, array);
+
+            //::вывод на экран измененного массива
+            Console.WriteLine("Changed array: ");
+            Print(array);
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполение одномерного массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генеретор случайных чисел</param>
+        /// <param name="array">одномерный массив чисел</param>
+        /// <returns></returns>
+        static public int[,] FillArray(Random rnd, int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    array[i,z] = rnd.Next(1, 100);
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// поиск макисмально значения элемента одномерного массива и
+        /// определение номера его индекса
+        /// </summary>
+        /// <param name="elementID">номер индекса, элемента хранящего
+        /// максимальное значение</param>
+        /// <param name="array">одномерный массив целых чисел</param>
+        /// <returns>максимальное значение элемента массива</returns>
+        static public int MinValue(int[,] array)
+        {
+            int tmpMinValue = 0;
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for(int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    if (i == 0 && z == 0) tmpMinValue = array[i, z];
+                    if (array[i, z] < tmpMinValue)
+                    {
+                        tmpMinValue = array[i, z];
+                    }
+                }
+            }
+            return tmpMinValue;
+        }
+
+        /// <summary>
+        /// вывод на экран значений элементов одномерного массива
+        /// </summary>
+        /// <param name="array">одномерный массива целых чисел</param>
+        static public void Print(int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    Console.Write("{0,-3}", array[i,z]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// Умножение всех значений массива равных min на multiplier
+        /// </summary>
+        /// <param name="multiplier">множитель</param>
+        /// <param name="min"> значение которое необходимо изменить</param>
+        /// <param name="array">массив целых чисел</param>
+        static public void Change(int multiplier, int min, int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for(int i = 0; i < row; ++i)
+            {
+                for(int z = 0; z < col; ++z)
+                {
+                    if(array[i,z] == min)
+                    {
+                        array[i, z] *= 2;
+                    }
+                }
+            }
+        }
+    }
+}
