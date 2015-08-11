@@ -1,0 +1,122 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Создать двумерный массив из N x M целых чисел. Написать программу для 
+ *  подсчета суммы этих чисел
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_9
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int[,] array;               //двумерный массив целых чисел
+            int row;                    //количество строк
+            int col;                    //количество столбцов
+            Random rnd = new Random();  //генератор случайных чисел
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            Console.WriteLine("Create array: ");
+            Console.Write("{0,-30}", "Input number of rows -->");
+            row = int.Parse(Console.ReadLine());
+            Console.Write("{0,-30}", "Input number of columns -->");
+            col = int.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::выделение динамической памяти для хранения массива
+            array = new int[row, col];
+
+            //::заполнение массива случайными числами
+            FillArray(rnd, array);
+
+            //::вывод элементов двумерного массива на экран
+            Console.WriteLine(Environment.NewLine + "Original array: ");
+            PrintArray(array);
+
+            //::подсчет cуммы элементов двумерного массива
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Sum of array elements: {0}", 
+                SumArray(array));
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+        
+        /// <summary>
+        /// заполнение двумерного массива случайными числами 
+        /// </summary>
+        /// <param name="rnd">герератор случайных чисел</param>
+        /// <param name="array">двумерный массив</param>
+        /// <returns></returns>
+        static public int[,] FillArray(Random rnd, int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for(int i = 0; i < row; ++i)
+            {
+                for(int z = 0; z < col; ++z)
+                {
+                    array[i, z] = rnd.Next(-10, 10);
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// вывод элементов двумерного массива на экран
+        /// </summary>
+        /// <param name="array">двумерный массив</param>
+        static public void PrintArray(int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    Console.Write("{0,4:D}", array[i, z]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// суммирование значений элементов массива
+        /// </summary>
+        /// <param name="array">двумерный массив</param>
+        /// <returns>сумму значений элементов масссива</returns>
+        static public int SumArray(int[,] array)
+        {
+            int sum = 0;
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    sum += array[i, z];
+                }
+            }
+            return sum;
+        }
+    }
+}
