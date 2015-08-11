@@ -1,0 +1,125 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Создать двумерный массив. Заполнить случайными целыми числами. Создать
+ *  метод, находящий в массиве наибольшее значение и вычисляющий его номер
+ *  индека.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int[,] array = new int[4,4];    //массив целых чисел
+            int max;                        //максимальное значение в массиве
+            int rowID;                      //номер строки элемента
+            int colID;                      //номер столбца элемента
+            Random rnd = new Random();      //генератор случайных чисел
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::заполнение одномерного массива случайными числами
+            array = FillArray(rnd, array);
+
+            //::вывод на экран значений элементов одномерного массива
+            Print(array);
+
+            //::определение максимального значения элемента одномерного массива
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Max value = {0}" + Environment.NewLine +
+                "rowID = {1}" + Environment.NewLine + "colID = {2}", 
+                MaxValue(out rowID, out colID, array), rowID, colID);
+            
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполение одномерного массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генеретор случайных чисел</param>
+        /// <param name="array">одномерный массив чисел</param>
+        /// <returns></returns>
+        static public int[,] FillArray(Random rnd, int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    array[i,z] = rnd.Next(1, 100);
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// поиск макисмально значения элемента одномерного массива и
+        /// определение номера его индекса
+        /// </summary>
+        /// <param name="elementID">номер индекса, элемента хранящего
+        /// максимальное значение</param>
+        /// <param name="array">одномерный массив целых чисел</param>
+        /// <returns>максимальное значение элемента массива</returns>
+        static public int MaxValue(out int rowID, out int colID, int[,] array)
+        {
+            int tmpMaxValue = 0;
+            rowID = 0;
+            colID = 0;
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for(int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    if (i == 0 && z == 0) tmpMaxValue = array[i,z];
+                    if (array[i,z] > tmpMaxValue)
+                    {
+                        rowID = i;
+                        colID = z;
+                        tmpMaxValue = array[i,z];
+                    }
+                }
+            }
+            return tmpMaxValue;
+        }
+
+        /// <summary>
+        /// вывод на экран значений элементов одномерного массива
+        /// </summary>
+        /// <param name="array">одномерный массива целых чисел</param>
+        static public void Print(int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    Console.Write("{0,-3}", array[i,z]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
