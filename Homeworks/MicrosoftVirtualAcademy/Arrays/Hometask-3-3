@@ -1,0 +1,123 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Создать двумерный массив. Заполнить случайными целыми числами. Подсчитать
+ *  количество пар соседних элементов массива, для которых предыдущий элемент 
+ *  больше последующего.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_3
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int[,] array = new int[5,5];    //массив целых чисел
+            Random rnd = new Random();      //генератор случайных чисел
+            int count;                      //количество пар соотв. условию
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::заполнение двумерного массива случайными числами
+            array = FillArray(rnd, array);
+
+            //::вывод на экран значений элементов двумерного массива
+            Print(array);
+
+            //::вывод на экран количества пар соседних элементов массива, 
+            //  для которых предыдущий элемент больше последующего
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Количество пар = {0}", Count(array));
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполение двумерного массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генеретор случайных чисел</param>
+        /// <param name="array">двумерный массив чисел</param>
+        /// <returns>двумерный массив заполненный целыми числами</returns>
+        static public int[,] FillArray(Random rnd, int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    array[i,z] = rnd.Next(1, 100);
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// вывод на экран значений элементов двумерного массива
+        /// </summary>
+        /// <param name="array">двумерный массив целых чисел</param>
+        static public void Print(int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    Console.Write("{0,-3}", array[i,z]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// подсчет количества пар соседних элементов массива, для которых 
+        /// предыдущий элемент больше последующего.
+        /// </summary>
+        /// <param name="array">двумерный массив </param>
+        /// <returns>количества пар соседних элементов массива, для которых 
+        /// предыдущий элемент больше последующего</returns>
+        static public int Count(int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            int counter = 0;
+            for(int i = 0; i < row; ++i)
+            {
+                for(int z = 0; z < col; ++z)
+                {
+                    if (z == 0 && i == 0) 
+                    {
+                        continue;
+                    }
+                    if (z == 0 && i > 0 && array[i - 1,col - 1] > array[i,z])
+                    {
+                        ++counter;
+                    }
+                    if (z > 0 && array[i, z - 1] > array[i,z])
+                    {
+                        ++counter;
+                    }
+                }
+            }
+            return counter;
+        }
+    }
+}
