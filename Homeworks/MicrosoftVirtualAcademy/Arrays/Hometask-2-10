@@ -1,0 +1,109 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Создать одномерный массив. Заполнить случайными целыми числами. Создать
+ *  метод, находящий в массиве наибольшее значение и вычисляющий его номер
+ *  индека.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_10
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int[] array = new int[10];      //массив целых чисел
+            int max;                        //максимальное значение в массиве
+            int elementID;                  //номер элемента в массиве
+            Random rnd = new Random();      //генератор случайных чисел
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::заполнение одномерного массива случайными числами
+            array = FillArray(rnd, array);
+
+            //::вывод на экран значений элементов одномерного массива
+            Print(array);
+
+            //::определение максимального значения элемента одномерного массива
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Max value = {0}" + Environment.NewLine +
+                "Index of max value = {1}", MaxValue(out elementID, array),
+                elementID);
+            
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполение одномерного массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генеретор случайных чисел</param>
+        /// <param name="array">одномерный массив чисел</param>
+        /// <returns></returns>
+        static public int[] FillArray(Random rnd, int[] array)
+        {
+            int length = array.Length;
+            for(int i = 0; i < length; ++i)
+            {
+                array[i] = rnd.Next(1, 100);
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// поиск макисмально значения элемента одномерного массива и
+        /// определение номера его индекса
+        /// </summary>
+        /// <param name="elementID">номер индекса, элемента хранящего
+        /// максимальное значение</param>
+        /// <param name="array">одномерный массив целых чисел</param>
+        /// <returns>максимальное значение элемента массива</returns>
+        static public int MaxValue(out int elementID, int[] array)
+        {
+            int tmpMaxValue = 0;
+            elementID = 0;
+            int length = array.Length;
+            for(int i = 0; i < length; ++i)
+            {
+                if(i == 0) tmpMaxValue = array[i];
+                if (array[i] > tmpMaxValue)
+                {
+                    elementID = i;
+                    tmpMaxValue = array[i];
+                }
+            }
+            return tmpMaxValue;
+        }
+
+        /// <summary>
+        /// вывод на экран значений элементов одномерного массива
+        /// </summary>
+        /// <param name="array">одномерный массива целых чисел</param>
+        static public void Print(int[] array)
+        {
+            foreach(int value in array)
+            {
+                Console.Write("{0,-3}", value);
+            }
+            Console.WriteLine();
+        }
+    }
+}
