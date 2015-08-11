@@ -1,0 +1,117 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана двумерная матрица n×n, элементами которой являются целые числа. 
+ *  Поменять местами ее строки следующим образом: первую строку с последней, 
+ *  вторую с предпоследней и т.д.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_5
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int[,] array = new int[4, 6];   //массив целых чисел
+            Random rnd = new Random();      //генератор случайных чисел
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::заполнение двумерного массива случайными числами
+            array = FillArray(rnd, array);
+
+            //::вывод на экран значений элементов двумерного массива
+            Print(array);
+
+
+            //::изменение положения строк массива
+            array = Move(array);
+
+            //:: вывод на экран измененного массива
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine);
+            Print(array);
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполение двумерного массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генеретор случайных чисел</param>
+        /// <param name="array">двумерный массив чисел</param>
+        /// <returns>двумерный массив заполненный целыми числами</returns>
+        static public int[,] FillArray(Random rnd, int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    array[i, z] = rnd.Next(1,10);
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// вывод на экран значений элементов двумерного массива
+        /// </summary>
+        /// <param name="array">двумерный массив целых чисел</param>
+        static public void Print(int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    Console.Write("{0,-3}", array[i, z]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+
+        /// <summary>
+        /// Меняет местами строки массива следующим образом: первую строку с 
+        /// последней, вторую с предпоследней и т.д.
+        /// </summary>
+        /// <param name="array">двумерный массив целых чисел</param>
+        /// <returns>двумерный массив целых чисел</returns>
+        static public int[,] Move(int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            int[] tmpArray = new int[col];
+            for(int i = 0, j = row - 1; i < row / 2; ++i, --j)
+            {
+                for(int z = 0; z < col; ++z)
+                {
+                    tmpArray[z] = array[i, z];
+                    array[i, z] = array[j, z];
+                    array[j, z] = tmpArray[z];
+                }
+            }
+            return array;
+        }
+    }
+}
