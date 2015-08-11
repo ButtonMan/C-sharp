@@ -1,0 +1,86 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Cоздать двумерный массив целочисленных значений. Заполнить массив 
+ *  случайными числами. Полученный массив вывести не экран.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_5
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int[,] array = new int[5, 5];   //двумерный массив целочисленных
+                                            //значений
+            Random rnd = new Random();      //генератор случайных чисел
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::заполнение двумерного массива случайными целочисленными 
+            //  значениями
+            array = FillArray(rnd, array);
+
+            //::вывод на экран значений двумерного массива
+            Console.WriteLine("RESULT: ");
+            PrintArray(array);
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// Заполнение двумерного массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генератор случайных чисел</param>
+        /// <param name="array">двумерный массив целочисленных значений</param>
+        /// <returns>заполенный значениями двумерный массив</returns>
+        static public int[,] FillArray(Random rnd, int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for(int i = 0; i < row; ++i)
+            {
+                for(int z = 0; z < col; ++z)
+                {
+                    array[i, z] = rnd.Next(1, 10);
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// вывод на экрна значений элементов двумерного массива целочисленных
+        /// значений
+        /// </summary>
+        /// <param name="array">двумерный массив целочисленных значений</param>
+        static public void PrintArray(int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for(int i = 0; i < row; ++i)
+            {
+                for(int z = 0; z < col; ++z)
+                {
+                    Console.Write("{0,-4:D}", array[i, z]);
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
