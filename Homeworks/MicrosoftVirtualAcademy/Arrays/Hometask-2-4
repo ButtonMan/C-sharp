@@ -1,0 +1,127 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Cоздать одномерный массив целочисленных значений. Заполнить массив 
+ *  случайными числами. Создать метод выполняющий суммирование всех значений
+ *  элементов, стоящий на нечетных позициях. Полученный результат вывести
+ *  на экран.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_13
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            double sum;                             //сумма чисел
+            int[] array = new int[10];              //массив чисел
+            Random rnd = new Random();              //генератор случайных чисел
+            int NumberOfElements;                   //колич. элементов массива
+                                                    //которые необходимо 
+                                                    //ссумировать
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод количества элементов массива, не парные значения которых 
+            //  необходимо ссумировать
+            Console.Write("Enter the number of elements that need to be" +
+                "summarized" + Environment.NewLine + "--> ");
+            NumberOfElements =int.Parse(Console.ReadLine());
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+
+            //::заполнение массива целочисленными случайными значениями
+            FillArray(rnd, array);
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::вывод на экран исходных значений элементов массива
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            PrintArray(array);
+
+            //::суммирования первых N элементов целочиселенного массива с 
+            //  нечетными индексами
+            sum = SumOddElements(NumberOfElements, array);
+
+            //::вывод на экран значение суммы
+            Console.WriteLine("Sum = {0}", sum);
+        }
+
+        /// <summary>
+        /// заполнение массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генератор случайных чисел</param>
+        /// <param name="array">массив целочисленного типа</param>
+        /// <returns>массив, заполненный случайными целочисленными значениями
+        /// </returns>
+        static public int[] FillArray(Random rnd, int[] array)
+        {
+            int tmpLengh = array.Length;
+            for(int i = 0; i < tmpLengh; ++i)
+            {
+                array[i] = rnd.Next(1, 10);
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// суммирования первых N элементов целочиселенного массива с 
+        /// нечетными индексами
+        /// </summary>
+        /// <param name="NumberOfElements">количество элементов которые 
+        /// подлежат суммированию</param>
+        /// <param name="array">массив целочисленных значений</param>
+        /// <returns></returns>
+        static public int SumOddElements(int NumberOfElements,params int[] array)
+        {
+            int tmpSum = 0;
+            if (array != null)
+            {
+                for (int counter = 0; counter < NumberOfElements; ++counter)
+                {
+                    if (counter % 2 == 0)
+                    {
+                        tmpSum += array[counter];
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("!Array is empty!");
+            }
+            return tmpSum;
+        }
+
+        /// <summary>
+        /// вывод на экран значений элементов массива
+        /// </summary>
+        /// <param name="array">массив целочисленных значений</param>
+        static public void PrintArray(int[] array)
+        {
+            foreach(int value in array)
+            {
+                Console.Write("{0,-6:D}", value);
+            }
+            Console.WriteLine();
+        }
+    }
+}
