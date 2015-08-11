@@ -1,0 +1,109 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана квадратная матрица, элементами которой являются вещественные числа. 
+ *  Подсчитать сумму элементов побочной диагонали.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_4
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            int[,] array = new int[4, 4];    //массив целых чисел
+            Random rnd = new Random();      //генератор случайных чисел
+            int sumOfElements;              //сумма элементов побочной 
+            //диагонали
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::заполнение двумерного массива случайными числами
+            array = FillArray(rnd, array);
+
+            //::вывод на экран значений элементов двумерного массива
+            Print(array);
+
+            //::расчет суммы значений элементов побочной диагонали квадратной 
+            //  матрицы
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Sum of elements of the secondary" +
+                "diagonal = {0}", SecondaryDiagonal(array));
+
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заполение двумерного массива случайными целочисленными значениями
+        /// </summary>
+        /// <param name="rnd">генеретор случайных чисел</param>
+        /// <param name="array">двумерный массив чисел</param>
+        /// <returns>двумерный массив заполненный целыми числами</returns>
+        static public int[,] FillArray(Random rnd, int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    array[i, z] = rnd.Next(1,10);
+                }
+            }
+            return array;
+        }
+
+        /// <summary>
+        /// вывод на экран значений элементов двумерного массива
+        /// </summary>
+        /// <param name="array">двумерный массив целых чисел</param>
+        static public void Print(int[,] array)
+        {
+            int row = array.GetLength(0);
+            int col = array.GetLength(1);
+            for (int i = 0; i < row; ++i)
+            {
+                for (int z = 0; z < col; ++z)
+                {
+                    Console.Write("{0,-3}", array[i, z]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// расчет суммы значений элементов побочной диагонали квадратной 
+        /// матрицы
+        /// </summary>
+        /// <param name="array">двумерная матрица</param>
+        /// <returns>сумма значений элментов побочной диагонали</returns>
+        static public int SecondaryDiagonal(int[,] array)
+        {
+            int row = array.GetLength(0) - 1;
+            int sum = 0;
+            for (int i = row, z = 0; i >= 0; --i, ++z)
+            {
+                sum += array[i, z];
+            }
+            return sum;
+        }
+    }
+}
