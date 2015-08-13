@@ -1,0 +1,86 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s удваивает каждое 
+ *  вхождение заданной подстроки x. Замечание: При решении задач использовать 
+ *  тип string.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_1
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = "Привет Мир!!!";
+            string subString;
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::вывод на экран исходной строки текста
+            Console.WriteLine("Original text:" + Environment.NewLine + "{0}" + 
+                Environment.NewLine, text);
+
+            //::ввод подстроки, которую необходимо продублировать
+            Console.Write("Input a substring that should be cloned: " +
+                Environment.NewLine + "--> ");
+            subString = Console.ReadLine();
+
+            //::выполнение клонирования в строке искомой подстроки
+            text = DoubleSubString(text, subString);
+
+            //::вывод на экран отредактированной строки
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            Console.WriteLine(text);
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// создание в строке копии заданной подстроки
+        /// </summary>
+        /// <param name="text">строка текста</param>
+        /// <param name="subString">подстрока которую необходимо 
+        /// продублировать</param>
+        /// <returns> текстовая строка с дублированной подстрокой</returns>
+        static public string DoubleSubString(string text, string subString)
+        {
+            StringBuilder tmpText = new StringBuilder(text);
+            string tmpSubString = subString + " ";
+            int tmpSubStringLength = tmpSubString.Length;
+            int subStrLength = subString.Length;
+            int firstIndex = -1;
+
+            do
+            {
+                if (firstIndex == -1)
+                {
+                    firstIndex = 0;
+                }
+                else
+                {
+                    firstIndex = firstIndex + subStrLength + tmpSubStringLength;
+                    if (firstIndex >= tmpText.Length) break;
+                }
+                firstIndex = tmpText.ToString().IndexOf(subString, firstIndex);
+                if (firstIndex == -1) break;
+                tmpText = tmpText.Insert(firstIndex, tmpSubString);
+            } while (firstIndex != -1);
+            return tmpText.ToString();
+        }
+    }
+}
