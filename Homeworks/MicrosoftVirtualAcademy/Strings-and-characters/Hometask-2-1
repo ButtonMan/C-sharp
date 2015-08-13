@@ -1,0 +1,75 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s вставляет символ x 
+ *  после каждого вхождения символа y. Замечание: При решении задач 
+ *  использовать класс StringBuilder.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_1
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            StringBuilder text = new StringBuilder();             //текстовая строка
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод текстовой строки подлежащей проверке
+            Console.Write("Input any string " + Environment.NewLine +
+                "--> ");
+            text.Append(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::вывод на экран строки в которой вставлен символ x после каждого
+            //  вхождения символа y
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "New string --> {0}", InputX(text));
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// вывод на экран строки в которой вставлен символ x после каждого
+        //  вхождения символа y
+        /// </summary>
+        /// <param name="text">строка символов</param>
+        /// <returns>отредактированная строка символов</returns>
+        static public StringBuilder InputX(StringBuilder text)
+        {
+            StringBuilder tmpText = new StringBuilder(text.ToString());
+            int index = 0;
+            do
+            {
+                index = (tmpText.ToString()).IndexOf('y', index, tmpText.Length - index);
+                if (index != -1)
+                {
+                    ++index;
+                    tmpText.Insert(index, 'x');
+                }
+            } while (index != -1);
+            return tmpText;
+        }
+    }
+}
