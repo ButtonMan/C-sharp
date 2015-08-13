@@ -1,0 +1,84 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s выводит на экран 
+ *  символы, которые встречаются в строке только один раз. Замечание: При 
+ *  решении задач использовать тип string.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_4
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = "программа";          //текстовая строка для 
+                                                //тестирования работы программы
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::ввыод на экран исходной строки символов
+            Console.WriteLine("Original string value" + Environment.NewLine +
+                "--> {0}", text);
+
+            //::вывод на экран символов, которые встречаются в строке только 
+            //  один раз
+            Console.WriteLine(Environment.NewLine + "REAULT: " +
+                Environment.NewLine + "--> {0}",
+                MinRepeatability(text));
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// определяет перечень символов, которые встречаются в строке только
+        /// один раз
+        /// </summary>
+        /// <param name="text">строка текста подлежащая исследования</param>
+        /// <returns>строка текста содержащая в себе отобранные символы
+        /// </returns>
+        static public string MinRepeatability(string text)
+        {
+            StringBuilder textBuffer = new StringBuilder();
+            int length = text.Length;
+            int count;
+            int MaxValue;
+
+            for(int i = 0; i < length; ++i)
+            {
+                count = 0;
+                foreach (char value in text)
+                {
+                    if(value == text[i])
+                    {
+                        ++count;
+                    }
+                }
+                if(count == 1)
+                {
+                    if((textBuffer.ToString()).IndexOf(text[i]) == -1)
+                    {
+                        textBuffer.Append(text[i]);
+                    }
+                }
+            }
+            return textBuffer.ToString();
+        }
+    }
+}
