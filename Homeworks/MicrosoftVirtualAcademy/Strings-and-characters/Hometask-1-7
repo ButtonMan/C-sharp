@@ -1,0 +1,69 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s подсчитывает 
+ *  количество цифр в строке. Замечание: При решении задач использовать тип 
+ *  string.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_7
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = string.Empty;             //текстовая строка
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод текстовой строки подлежащей проверке
+            Console.Write("Input any string " + Environment.NewLine +
+                "--> ");
+            text = Console.ReadLine();
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::определение количества цифр в строке и вывод результата на 
+            //  экран
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Number of digits in string = {0}",
+                CountDigits(text));
+        }
+
+
+        
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// определеяет количество указанных в строке цифр
+        /// </summary>
+        /// <param name="text">текстовая строка</param>
+        /// <returns>количество цифр в строке</returns>
+        static public int CountDigits(string text)
+        {
+            int counter = 0;
+            foreach (char value in text)
+            {
+                if (Char.IsDigit(value)) ++counter;
+            }
+            return counter;
+        }
+    }
+}
