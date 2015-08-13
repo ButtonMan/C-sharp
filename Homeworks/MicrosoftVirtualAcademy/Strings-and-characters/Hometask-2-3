@@ -1,0 +1,82 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s удаляет все символы х. 
+ *  Замечание: При решении задач использовать 
+ *  класс StringBuilder.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_3
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            StringBuilder text = new StringBuilder();   //текстовая строка       
+            char letter;                                //бука для удаления
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод текстовой строки подлежащей проверке
+            Console.Write("Input any string " + Environment.NewLine +
+                "--> ");
+            text.Append(Console.ReadLine());
+
+            //::ввод буквы которую необходимо полностью удалить из строки
+            Console.Write("Input the letter that you want to delete" + 
+                Environment.NewLine + "--> ");
+            letter = char.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::удаление из строки всех вхождений заданной пользователем
+            //  буквы
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Edited string --> {0}",
+                DeleteLetter(text, letter));
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// удаление из строки всех вхождений заданной пользователем
+        //  буквы
+        /// </summary>
+        /// <param name="text">строка символов</param>
+        /// <returns>отредактированная строка</returns>
+        static public StringBuilder DeleteLetter(StringBuilder text, char letter)
+        {
+            StringBuilder tmpText = new StringBuilder(text.ToString());
+            int index = 0;
+            do
+            {
+                index = (tmpText.ToString()).IndexOf(letter, index, tmpText.Length);
+                if (index != -1)
+                {
+                    tmpText.Remove(index, 1);
+                    index = 0;
+                }
+            } while (index != -1);
+            return tmpText;
+        }
+    }
+}
