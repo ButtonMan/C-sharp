@@ -1,0 +1,89 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s определяет, является 
+ *  ли строка палиндромом;. Замечание: При решении задач использовать тип 
+ *  string.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_4
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = string.Empty;             //текстовая строка
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+           
+            //::ввод произвольного слова для проверки, является ли оно
+            //  полиндромом
+            Console.Write("Input any word " + Environment.NewLine + "--> ");
+            text = Console.ReadLine();
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Word is --> {0}",
+                (IsPalindrome(text)) ? "palindrome" : "not palindrome");
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// проверка, является ли слово полиндромом
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        static public bool IsPalindrome(string text)
+        {
+            int length = text.Length;
+            char[] strPart1 = text.Substring(0, length / 2).ToCharArray();
+            char[] strPart2 = null;
+
+            if(length % 2 == 0)
+            {
+                strPart2 = text.Substring(length / 2, length / 2).ToCharArray();
+                Array.Reverse(strPart2);
+
+                if (strPart1.ToString() == strPart2.ToString())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                strPart2 = text.Substring(length / 2 + 1, 
+                    length - (length / 2 + 1)).ToCharArray();
+                Array.Reverse(strPart2);
+                if(strPart1.ToString() == strPart2.ToString())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+    }
+}
