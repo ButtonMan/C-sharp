@@ -1,0 +1,89 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s выводит на экран 
+ *  символы, которые наиболее часто встречается в строке;. Замечание: При 
+ *  решении задач использовать тип string.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_3
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = "Клаустрофобия мысли";
+            string subString;
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::вывод на экран исходной строки текста
+            Console.WriteLine("Original text:" + Environment.NewLine + "{0}", 
+                text);
+
+            //::вывод на экран наиболее часто встречающихся в строке символов
+            Console.WriteLine(Environment.NewLine + "RESULT: ");
+            Console.WriteLine("Char -> {0}", MaxRepeatability(text));
+
+        }
+
+
+        
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// определение наиболее часто встречающихся символов в строке
+        /// </summary>
+        /// <param name="text">текстовая строка</param>
+        /// <returns>текстовая строка, содержащая наиболее часто встречающиеся
+        /// в заданной пользователем строке символы</returns>
+        static public string MaxRepeatability(string text)
+        {
+            string charBuffer = String.Empty;
+            int count;
+            int MaxCount = 0;
+            int length = text.Length;
+
+            for(int i = 0; i < length; ++i)
+            {
+                count = 0;
+                if (text[i] == ' ') continue;
+                foreach(char value in text)
+                {
+                    if(value == text[i])
+                    {
+                        ++count;
+                    }
+                }
+                if(count > MaxCount)
+                {
+                    MaxCount = count;
+                    charBuffer = text[i].ToString();
+                }
+                else
+                {
+                    if(count == MaxCount)
+                    {
+                        if (charBuffer.IndexOf(text[i]) == -1)
+                        {
+                            charBuffer += text[i].ToString();
+                        }
+                    }
+                }
+            }
+            return charBuffer;
+        }
+    }
+}
