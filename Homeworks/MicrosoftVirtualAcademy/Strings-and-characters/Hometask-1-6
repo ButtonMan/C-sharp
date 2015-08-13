@@ -1,0 +1,75 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s определяет, 
+ *  упорядочены ли по алфавиту символы строки. Замечание: При решении 
+ *  задач использовать тип string.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_6
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = string.Empty;             //текстовая строка
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод текстовой строки поледащей проверке
+            Console.Write("Input any string " + Environment.NewLine +
+                "--> ");
+            text = Console.ReadLine();
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::вывод резултатов проверки, упорядочены ли по алфавиту символы 
+            //  строки
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "String is --> {0}",
+                (IsSorted(text)) ? "sorted alphabetically" :
+                "NOT sorted alphabetically");
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// определяет, упорядочены ли по алфавиту символы строки
+        /// </summary>
+        /// <param name="text">текстовая строка</param>
+        /// <returns>логическок значение</returns>
+        static public bool IsSorted(string text)
+        {
+            bool isSorted = true;
+            int length = text.Length - 1;
+            for (int i = 0; i < length; ++i)
+            {
+                if(text[i] > text[i + 1])
+                {
+                    isSorted = false;
+                    break;
+                }
+            }
+                return isSorted;
+        }
+    }
+}
