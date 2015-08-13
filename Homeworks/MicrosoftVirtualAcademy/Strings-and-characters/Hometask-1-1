@@ -1,0 +1,65 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s подсчитывает общее 
+ *  число вхождений символов х и y. Замечание: При решении задач использовать 
+ *  тип string.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_1
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = "xx yy xy yx";
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::вывод на экран исходной строки текста
+            Console.WriteLine("Original text:" + Environment.NewLine + "{0}" + 
+                Environment.NewLine, text);
+
+            //::вывод на экран количества вхождений в строку символов x и y
+            Console.WriteLine("RESULT: ");
+            Console.WriteLine("x = {0,1}", Count(text, 'x'));
+            Console.WriteLine("y = {0,1}", Count(text, 'y'));
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// подсчет количества вхождений заданного пользователем символа в 
+        /// строку
+        /// </summary>
+        /// <param name="text">строка с произвольным текстом</param>
+        /// <param name="character">искомый символ</param>
+        /// <returns> количество вхождений заданного символа в строку</returns>
+        static public int Count(string text, char character)
+        {
+            int sum = 0;
+            foreach(char value in text)
+            {
+                if (value == character)
+                {
+                    ++sum;
+                }
+            }
+            return sum;
+        }
+    }
+}
