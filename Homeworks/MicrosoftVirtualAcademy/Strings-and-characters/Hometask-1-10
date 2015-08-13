@@ -1,0 +1,76 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s выводит на экран 
+ *  последовательность символов, расположенных после последнего двоеточия. 
+ *  Замечание: При решении задач использовать тип string.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_1_10
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = string.Empty;             //текстовая строка
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод текстовой строки подлежащей проверке
+            Console.Write("Input any string " + Environment.NewLine +
+                "--> ");
+            text = Console.ReadLine();
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::вывод на экран последовательности символов, расположенных 
+            //  после последнего двоеточия
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Extracted text --> {0}",
+                GetText(text));
+        }
+
+
+        
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// выводит на экран последовательность символов строки, 
+        //  расположенных до первого двоеточия
+        /// </summary>
+        /// <param name="text">текстовая строка</param>
+        /// <returns>строка отобранных символов расположенных в строке
+        /// до двоеточия</returns>
+        static public string GetText(string text)
+        {
+            int index = text.LastIndexOf(':');
+            int length = text.Length;
+            string subString = string.Empty;
+            if (index < length && index >= 0 && index != length - 1)
+            {
+                return text.Substring(index + 1, length - index - 1);
+            }
+            else
+            {
+                return subString;
+            }
+        }
+    }
+}
