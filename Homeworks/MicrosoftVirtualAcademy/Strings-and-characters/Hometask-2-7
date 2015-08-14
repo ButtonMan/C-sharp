@@ -1,0 +1,74 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s меняет местами первую 
+ *  букву со второй, третью с четвертой и т.д. Замечание: При решении задач 
+ *  использовать класс StringBuilder.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_7
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            StringBuilder str = new StringBuilder();    //текстовая строка
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод пользователем произвольной строки            
+            Console.Write("Input any string" + Environment.NewLine + "--> ");
+            str.Append(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::меняет местами первую букву со второй, третью с четвертой и т.д.
+            // результат изменений выводится на экран
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Edited string --> {0}", Swap(str));
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// Выполняет перестановку элементов в текстовой строке, 
+        /// меняет местами первую букву со второй, третью с четвертой и т.д.
+        /// </summary>
+        /// <param name="str">произвольная текстовая строка заданная 
+        /// пользователем</param>
+        /// <returns>отредактированная текстовая строка</returns>
+        static public StringBuilder Swap(StringBuilder str)
+        {
+            StringBuilder tmpStr = new StringBuilder(str.ToString());
+            char tmpLetter;
+            int length = tmpStr.Length - 1;
+            for(int i = 0; i < length; i += 2)
+            {
+                tmpLetter = tmpStr[i];
+                tmpStr[i] = tmpStr[i + 1];
+                tmpStr[i + 1] = tmpLetter;
+            }
+            return tmpStr;
+        }
+    }
+}
