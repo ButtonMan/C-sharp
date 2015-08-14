@@ -1,0 +1,123 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s заменяет все группы 
+ *  стоящих рядом точек на многоточие. Замечание: При решении задач 
+ *  использовать класс StringBuilder.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_6
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            StringBuilder str = new StringBuilder();    //текстовая строка
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод пользователем произвольной строки            
+            Console.Write("Input any string" + Environment.NewLine + "--> ");
+            str.Append(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::замена в текстовой строке всех вхождений cтоящих рядом точек 
+            //  на многоточие и вывод результата на экран
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Edited string --> {0}",
+                InsertPoints(str));
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// заменяет в текстовой строке все группы стоящих рядом точек на 
+        /// многоточие
+        /// </summary>
+        /// <param name="str">текстовая строка определенная пользователем
+        /// </param>
+        /// <returns>текстовая строка в которой все группы рядом стоящих точек
+        /// заменены на многоточие</returns>
+        static public StringBuilder InsertPoints(StringBuilder str)
+        {
+            StringBuilder tmpStr = new StringBuilder(str.ToString());
+            int startID = 0;
+            int endID = 0;
+            int counter = 0;
+            do
+            {
+                if (startID < tmpStr.Length)
+                {
+                    startID = tmpStr.ToString().IndexOf('.', startID, 
+                        tmpStr.Length - startID);
+                }
+                else
+                {
+                    break;
+                }
+                if (startID != -1)
+                {
+                    for (int i = startID; i < tmpStr.Length; ++i)
+                    {
+                        if (Char.IsLetterOrDigit(tmpStr[i]) ||
+                            Char.IsWhiteSpace(tmpStr[i]))
+                        {
+                            endID = i;
+                            break;
+                        }
+                        else
+                        {
+                            if (i + 1 == tmpStr.Length)
+                            {
+                                endID = i + 1;
+                                if (tmpStr[i] == '.')
+                                {
+                                    ++counter;
+                                }
+                            }
+                            else
+                            {
+                                if (tmpStr[i] == '.')
+                                {
+                                    ++counter;
+                                }
+                            }
+                        }
+                    }
+                    if (counter >= 2)
+                    {
+                        tmpStr.Remove(startID, (endID - startID == 0) ? 1 : endID - startID);
+                        tmpStr.Insert(startID, "...");
+                        startID += 3;
+                    }
+                    else
+                    {
+                        ++startID;
+                    }
+                }
+                counter = 0;
+            } while (startID != -1);
+            return tmpStr;
+        }
+    }
+}
