@@ -1,0 +1,72 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s удаляет из строки все 
+ *  подстроки, состоящие из цифр. Замечание: При решении задач использовать 
+ *  класс StringBuilder.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_9
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            StringBuilder str = new StringBuilder();    //текстовая строка
+            
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод пользователем произвольной строки            
+            Console.Write("Input any string" + Environment.NewLine + "--> ");
+            str.Append(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::удаляет из строки все подстроки, состоящие из цифр, результат
+            //  выводится на экран
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Edited string --> {0}", Swap(str));
+        }
+        
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+        
+        /// <summary>
+        /// удаляет из строки все подстроки, состоящие из цифр
+        /// </summary>
+        /// <param name="str">произвольна текстовая строка из которой 
+        /// необходимо удалить все цифры</param>
+        /// <returns>отредактированная текстовая строка без цифр</returns>
+        static public StringBuilder RemoveNumbers(StringBuilder str)
+        {
+            StringBuilder tmpStr = new StringBuilder(str.ToString());
+            for(int i = 0; i < str.Length; ++i)
+            {
+                if(char.IsDigit(tmpStr[i]))
+                {
+                    tmpStr.Remove(i, 1);
+                    --i;
+                }
+            }
+            return tmpStr;
+        }
+    }
+}
