@@ -1,0 +1,79 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s удаляет все подстроки 
+ *  substr. Замечание: При решении задач использовать класс StringBuilder.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_4
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            StringBuilder str = new StringBuilder();                //строка
+            StringBuilder subStr = new StringBuilder();             //подстрока
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+            
+            //::ввод строки подлежащей редактированию
+            Console.Write("Input any string line" + Environment.NewLine +
+                "-->");
+            str.Append(Console.ReadLine());
+
+            //::ввод подстроки подлежащей удалению
+            Console.Write("Delete sub string" + Environment.NewLine +
+                "-->");
+            subStr.Append(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::редактирование строки и вывод результата на экран
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Edited string --> {0}",
+                RemoveSubstring(str, subStr));
+
+        }
+        
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// удаление из строки заданной пользователем подстроки
+        /// </summary>
+        /// <param name="str">редактируемая строка</param>
+        /// <param name="subStr">удаляемая подстрока</param>
+        /// <returns>отредактированная строка текста</returns>
+        static public StringBuilder RemoveSubstring(StringBuilder str, 
+            StringBuilder subStr)
+        {
+            StringBuilder tmpStr = new StringBuilder(str.ToString());
+            int index = 0;
+            do
+            {
+                index = tmpStr.ToString().IndexOf(subStr.ToString(), index = 0,
+                    tmpStr.Length);
+                if (index != -1) tmpStr.Remove(index, subStr.Length);
+            } while (index != -1);
+            return tmpStr;
+        }
+    }
+}
