@@ -1,0 +1,97 @@
+/+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана строка, в которой содержится осмысленное текстовое сообщение. Слова 
+ *  сообщения разделяются пробелами и знаками препинания. Удалить из сообщения 
+ *  все повторяющиеся слова (без учета регистра). При решении задач 
+ *  из данного пункта использовать типstring или StringBuilder. Свой выбор 
+ *  обосновать.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_4
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = String.Empty;     //текстовая строка
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+
+            //::ввод пользователем строки произвольного содержания
+            Console.Write("Input any string" + Environment.NewLine + "--> ");
+            text = Console.ReadLine();
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::удаление из сообщения всех повторяющихся слов (без учета 
+            //  регистра).
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Edited string --> {0}",
+                DeleteDuplecates(text));
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// удаляет из строки все повторяющиеся слова (без учета регистра)
+        /// </summary>
+        /// <param name="text">произвольная строка символов подлежащая
+        /// исследованию</param>
+        /// <returns>строка из которой были удалены все повторяющиеся 
+        /// подстроки</returns>
+        public static string DeleteDuplecates(string text)
+        {
+            StringBuilder newText = new StringBuilder();
+            StringBuilder subString = new StringBuilder();
+            string[] buffer = text.Split();
+            int count = 0;
+            
+            foreach(string strValue in buffer)
+            {
+                if (subString.ToString().IndexOf(strValue) >= 0) continue;
+                subString.Append(strValue);
+                foreach(string element in buffer)
+                {
+                    if(string.Compare(subString.ToString(),element,true) == 0)
+                    {
+                        ++count;
+                    }
+                }
+                if(count >=2)
+                {
+                    foreach(string element in buffer)
+                    {
+                        if(!(string.Compare(element,subString.ToString(), 
+                            true) == 0))
+                        {
+                            newText.Append(((newText.Length > 0) ? " " : "") +
+                                element);
+                        }
+                    }
+                }
+                count = 0;
+            }
+            return newText.ToString();
+        }
+    }
+}
