@@ -27,6 +27,8 @@ namespace HT_3_1
             string text = String.Empty;                 //текстовое строка
             int length;
 
+
+
             //ВВОД ДАННЫХ
             //+---------------------------------------------------------------+
 
@@ -41,6 +43,7 @@ namespace HT_3_1
             length = int.Parse(Console.ReadLine());
 
 
+
             //РЕШЕНИЕ ЗАДАЧИ
             //+---------------------------------------------------------------+
 
@@ -49,7 +52,6 @@ namespace HT_3_1
             Console.WriteLine(Environment.NewLine + "RESULT: " +
                 Environment.NewLine + "Substrings with length = {0} " +
                 "--> \"{1}\"", length, Select(text, length));
-
         }
 
 
