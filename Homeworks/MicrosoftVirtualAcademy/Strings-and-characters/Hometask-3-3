@@ -1,0 +1,87 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана строка, в которой содержится осмысленное текстовое сообщение. Слова 
+ *  сообщения разделяются пробелами и знаками препинания. Удалить из сообщения 
+ *  все слова, которые заканчиваются на заданный символ. При решении задач 
+ *  из данного пункта использовать типstring или StringBuilder. Свой выбор 
+ *  обосновать.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_3
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = String.Empty;     //текстовая строка
+            char letter;                    //символ выступающий критерием
+                                            //поиска
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+
+            //::ввод пользователем строки произвольного содержания
+            Console.Write("Input any string" + Environment.NewLine + "--> ");
+            text = Console.ReadLine();
+
+            //::ввод символа выступающего критерием поиска и отбора подстрок
+            //  в строке           
+            Console.Write("Input any letter" + Environment.NewLine + "--> ");
+            letter = Char.Parse(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::Удаляем из сообщения все слова, которые заканчиваются на 
+            //  заданный символ. Полученный результат выводится на экран.
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Edited string \"{0}\" --> \"{1}\"", 
+                letter, Select(text, letter));
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// удаляет из сообщения все слова, которые заканчиваются на 
+        //  заданный пользователем символ.
+        /// </summary>
+        /// <param name="text">произвольная строка текста которая подлежит
+        /// исследованию</param>
+        /// <param name="letter">символ, на котрый должна заканчиватся 
+        /// подстрока, для того что бы быть отобранной</param>
+        /// <returns>строка содержащая отобранный список подстрок, согласного
+        /// заданному критерию</returns>
+        public static string Select(string text, char letter)
+        {
+            StringBuilder newText = new StringBuilder();
+            string[] buffer = text.Split();
+
+            foreach(string strValue in buffer)
+            {
+                if(!strValue.EndsWith(letter.ToString()))
+                {
+                    newText.Append(((newText.Length > 0)?" ":"") + strValue);
+                }
+            }
+            return newText.ToString();
+        }
+    }
+}
