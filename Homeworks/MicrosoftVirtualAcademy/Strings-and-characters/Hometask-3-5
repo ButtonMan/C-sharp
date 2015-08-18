@@ -1,0 +1,87 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана строка, в которой содержится осмысленное текстовое сообщение. Слова 
+ *  сообщения разделяются пробелами и знаками препинания. Подсчитать сколько 
+ *  раз заданное слово встречается в сообщении. При решении задач из данного 
+ *  пункта использовать типstring или StringBuilder. Свой выбор обосновать.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_5
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = String.Empty;     //текстовая строка
+            string subString = String.Empty;//искомое в строке слово
+
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+
+            //::ввод пользователем строки произвольного содержания
+            Console.Write("Input any string" + Environment.NewLine + "--> ");
+            text = Console.ReadLine();
+
+            //::ввод слова, количество повторений  в строке которого, необходимо 
+            //  посчитать
+            Console.Write("Input substring " + Environment.NewLine + "--> ");
+            subString = Console.ReadLine();
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::подсчет количества повторений заданного пользователем слова в
+            //  в строке и вывод полученного результата на экран
+            Console.WriteLine(Environment.NewLine + "RESULT" +
+                Environment.NewLine + "Word - \"{0}\" repeats {1} times.",
+                subString, Count(text, subString));
+            
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary> Подчет количества повторений в строке заданного слова.
+        /// </summary>
+        /// <param name="text">произваольная строкам символов задаваемая 
+        /// пользователем </param>
+        /// <param name="subString">слово, количество вхождений в строку
+        /// которого, нужно посчитать</param>
+        /// <returns>количество повторений заданного слова в строке </returns>
+        public static int Count(string text, string subString)
+        {
+            int index = 0;
+            int counter = 0;
+            int txtLength = text.Length;
+            int subStrlength = subString.Length;
+            char[] splitters = { '.', ',', '!', '?', '\"', ':', ';', ' ' };
+            string[] buffer = text.Split(splitters);
+
+            foreach(string word in buffer)
+            {
+                if(string.Compare(word, subString, true) == 0)
+                {
+                    ++counter;
+                }
+            }
+            return counter;
+        }
+    }
+}
