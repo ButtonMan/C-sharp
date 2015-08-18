@@ -1,0 +1,118 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Разработать программу, которая для заданной строки s удаляет из строки 
+ *  самую длинную подстроку, состоящую из повторяющегося символа. Замечание: 
+ *  При решении задач использовать класс StringBuilder.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_2_10
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            StringBuilder text = new StringBuilder();
+            StringBuilder delSubStrings = new StringBuilder();
+
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+
+            //::ввод пользователем строки произвольного содержания
+            Console.Write("Input any string" + Environment.NewLine + "--> ");
+            text.Append(Console.ReadLine());
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+            
+            //::удаление из строки самой длинной подстроки, стостоящей из
+            //  одинаковых символов. Вывол полученного результата на экран
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Edited string --> \"{0}\"" +
+                Environment.NewLine + "Next substrings were deleted: \"{1}\"",
+                MaxSubstring(text, out delSubStrings), delSubStrings);
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// удаляет из строки самую длинную подстроку, состоящую из 
+        /// повторяющегося символа.
+        /// </summary>
+        /// <param name="text">произвольная строка символов подлежащая 
+        /// редактированию</param>
+        /// <param name="delSubStrings">строка содержащая в себе удаленные
+        /// из оригинальной строки подстроки</param>
+        /// <returns>отредактированная строка символов</returns>
+        public static StringBuilder MaxSubstring(StringBuilder text,
+            out StringBuilder delSubStrings)
+        {
+            StringBuilder tmpText = new StringBuilder(text.ToString());
+            string[] subStrings = null;
+            int maxLength = 0;
+            bool isEqual;
+            delSubStrings = new StringBuilder();
+
+            subStrings = tmpText.ToString().Split(' ');
+            Array.Sort(subStrings);
+
+            foreach(string strValue in subStrings)
+            {
+                isEqual = true;
+                foreach(char charValue in strValue)
+                {
+                    if (charValue != strValue[0])
+                    {
+                        isEqual = false;
+                        break;
+                    }
+                }
+                if(isEqual)
+                {
+                    if(maxLength == strValue.Length)
+                    {
+                        maxLength = strValue.Length;
+                        if (!delSubStrings.ToString().Contains(strValue))
+                        {
+                            delSubStrings.Append(strValue +
+                                ((delSubStrings.Length > 0) ? " " : ""));
+                        }
+                    }
+                    else
+                    {
+                        if (maxLength < strValue.Length)
+                        {
+                            maxLength = strValue.Length;
+                            delSubStrings.Clear();
+                            delSubStrings.Append(strValue + 
+                                ((delSubStrings.Length > 0)? " " : ""));
+                        }
+                    }
+                }
+            }
+            subStrings = delSubStrings.ToString().Split();
+            for (int i = 0; i < subStrings.GetLength(0); ++i)
+            {
+                tmpText.Replace(subStrings[i],"");
+            }
+                return tmpText;
+        }
+    }
+}
