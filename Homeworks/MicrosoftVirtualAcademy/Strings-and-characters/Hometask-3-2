@@ -1,0 +1,86 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана строка, в которой содержится осмысленное текстовое сообщение. Слова 
+ *  сообщения разделяются пробелами и знаками препинания. Вывести только те 
+ *  слова сообщения, которые содержат хотя бы одну цифру. При решении задач 
+ *  из данного пункта использовать типstring или StringBuilder. Свой выбор 
+ *  обосновать.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_2
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = String.Empty;     //текстовая строка
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+
+            //::ввод пользователем строки произвольного содержания
+            Console.Write("Input any string" + Environment.NewLine + "--> ");
+            text = Console.ReadLine();
+
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::вывод на экран только тех  слов строки, которые содержат хотя 
+            //  бы одну цифру.
+            Console.WriteLine(Environment.NewLine + "RESULT: " + 
+                Environment.NewLine + "Substring that containing digits -->" +
+                "\"{0}\"", Select(text));
+
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// вывод на экран только тех  слов строки, которые, содержат хотя 
+        //  бы одну цифру
+        /// </summary>
+        /// <param name="text">произвольная строка текста подлежащая
+        /// исследованию</param>
+        /// <returns>перечень слов отобранных из строки, которые содержат в 
+        /// себе хотя бы одну цифру</returns>
+        public static string Select(string text)
+        {
+            StringBuilder newText = new StringBuilder();
+            char[] splitters = {'.',',',' ','-','!','&','?','/','<','>','%',
+                               '{','}','[',']'};
+
+
+            string[] buffer = text.Split(splitters);
+            foreach(string strValue in buffer)
+            {
+                foreach(char charValue in strValue)
+                {
+                    if(char.IsDigit(charValue))
+                    {
+                        newText.Append(((newText.Length > 0)? " ":"") +
+                            strValue);
+                        break;
+                    }
+                }
+            }
+            return newText.ToString();
+        }
+    }
+}
