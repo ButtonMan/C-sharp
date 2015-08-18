@@ -1,0 +1,86 @@
+//+---------------------------------------------------------------------------+
+/*  УСЛОВИЕ ЗАДАЧИ:
+ *  Дана строка, в которой содержится осмысленное текстовое сообщение. Слова 
+ *  сообщения разделяются пробелами и знаками препинания. Вывести только те 
+ *  слова сообщения, которые содержат не более чем n букв. При решении задач 
+ *  из данного пункта использовать типstring или StringBuilder. Свой выбор 
+ *  обосновать.
+ */
+//+---------------------------------------------------------------------------+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HT_3_1
+{
+    class Program
+    {
+        static void Main()
+        {
+            //ОБЪЯВЛЕНИЕ ПЕРЕМЕННЫХ
+            //+---------------------------------------------------------------+
+            string text = String.Empty;                 //текстовое строка
+            int length;
+
+            //ВВОД ДАННЫХ
+            //+---------------------------------------------------------------+
+
+            //::ввод пользователем строки произвольного содержания
+            Console.Write("Input any string" + Environment.NewLine + "--> ");
+            text = Console.ReadLine();
+
+            //::ввод пользователем количества букв которое должно содержатся
+            //  в подстроке
+            Console.Write("Input length of substring" + Environment.NewLine +
+                "--> ");
+            length = int.Parse(Console.ReadLine());
+
+
+            //РЕШЕНИЕ ЗАДАЧИ
+            //+---------------------------------------------------------------+
+
+            //::
+            Console.WriteLine(Environment.NewLine + "RESULT: " +
+                Environment.NewLine + "Substrings with length = {0} " +
+                "--> \"{1}\"", length, Select(text, length));
+
+        }
+
+
+
+        //ОБЪЯВЛЕНИЕ МЕТОДОВ
+        //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// Отбор подстрок из стркро длинна которых не превышает заданной 
+        /// длинны length.
+        /// </summary>
+        /// <param name="text">произвольная строка текста подлежащая 
+        /// исследованию</param>
+        /// <param name="length">длинна подстрок которые должны быть отобранны
+        /// </param>
+        /// <returns>строка содержащая в себе подстроки заданной длинны
+        /// </returns>
+        public static string Select(string text, int length)
+        {
+            string[] buffer = null;
+            StringBuilder newText = new StringBuilder();
+
+            buffer = text.Split(' ');
+
+            foreach(string value in buffer)
+            {
+                if (value.Length <= length)
+                {
+                    newText.Append(((newText.Length > 0) ? " " : "") + value);
+                }
+            }
+            return newText.ToString();
+        }
+    }
+}
