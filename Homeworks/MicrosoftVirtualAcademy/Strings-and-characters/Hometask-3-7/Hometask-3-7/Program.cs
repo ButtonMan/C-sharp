@@ -51,6 +51,10 @@ namespace HT_3_7
         //ОБЪЯВЛЕНИЕ МЕТОДОВ
         //+-------------------------------------------------------------------+
 
+        /// <summary>поиск самого короткого слова в текстовой строке</summary>
+        /// <param name="text">произвольная текстовая строка</param>
+        /// <returns>текстовая строка, соддержащая в себе набор слов с 
+        /// наименьшей длинной</returns>
         public static string SmallestWords(string text)
         {
             StringBuilder smallestWords = new StringBuilder();
