@@ -29,6 +29,14 @@ namespace UsingMouseEvents
 
         //МЕТОДЫ КЛАССА:
         //+-------------------------------------------------------------------+
+
+        /// <summary>
+        /// Метод, обрабатывающий событие MouseDown. При зажатии клавишы мыши
+        /// появляется соответствующее уведомление.
+        /// </summary>
+        /// <param name="sender">источник события</param>
+        /// <param name="e">объект MouseEventArgs, содержащий данные о событии
+        /// </param>
         public void MouseButtonsOn(Object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
