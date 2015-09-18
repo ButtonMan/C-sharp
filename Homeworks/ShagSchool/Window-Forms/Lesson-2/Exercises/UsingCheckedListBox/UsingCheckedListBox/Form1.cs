@@ -23,7 +23,7 @@ namespace UsingCheckedListBox
 
         /// <summary>
         /// Обработчик события нажатия на кнопку Add to CheckedBoxList.
-        /// Добавляет новой имя в список имен CheckedBoxList.
+        /// Добавляет новой имя в список имен CheckedListBox.
         /// </summary>
         private void ButtonAddToCheckedBoxClickOn(object sender, EventArgs e)
         {
@@ -53,10 +53,9 @@ namespace UsingCheckedListBox
         }
 
         /// <summary>
-        /// 
+        /// Обработчик события нажатия на кнопку Add selected.
+        /// Копирует имена из списка одного CheckedListBox в другой
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonAddSelectedClickOn(object sender, EventArgs e)
         {
             CheckedListBox.CheckedItemCollection selected = 
