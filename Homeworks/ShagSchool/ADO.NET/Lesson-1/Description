@@ -1,0 +1,35 @@
+
+Предмет: ADO.NET
+Урок №1
+
+Содержание:
+
+1. Что такое ADO.NET?
+2. Исторический экскурс в технологии доступа к данным
+  1. ODBC
+  2. DAO
+  3. OLE DB
+  4. ADO
+3. Сравнительный анализ технологий доступа к данным.
+4. Сравнительный анализ понятий драйвер и провайдер
+5. Пространства ADO.NET
+  1. System.Data
+  2. System.Data.Common
+  3. System.Data.OleDb
+  4. System.Data.SqlClient
+  5. System.Data.Sql
+  6. System.Data.Odbc
+  7. System.Data.OracleClient
+  8. Другие пространства
+6. Модели работы ADO.NET
+  1. Присоединенный режим
+  2. Отсоединенный режим
+7. Концепция интерфейсов и базовых классов ADO.NET
+  1. Интерфейс IDbConnection
+  2. Интерфейс IDbCommand
+  3. Интерфейсы IDataReader, IDataRecord
+  4. Интерфейсы IDataAdapter, IDbDataAdapter
+  5. Интерфейсы IDataParameter, IDbDataParameter
+  6. Интерфейс IDbTransaction
+  7. Классы DbConnection, DbCommand, DbDataReader, DbDataAdapter, DbParameter, DbTransaction
+8. Обзорный пример использования ADO.NET для доступа к источнику данных
